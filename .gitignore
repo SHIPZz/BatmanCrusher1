@@ -67,6 +67,14 @@ crashlytics-build.properties
 # Packed Addressables
 /[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
 
+Assets/GameScene.unity
+Assets/Scenes/Test.unity
+Assets/LevelPrefab
+Assets/RayFire/Info/Documentation/OtherComponentsWIP.rtf
+Assets/Plugins 1/RayFire
+Assets/Scripts/*.meta
+Assets/Scripts/Weapon
+
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
