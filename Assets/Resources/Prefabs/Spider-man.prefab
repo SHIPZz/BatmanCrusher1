@@ -95,7 +95,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7574486574114336904}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &43764033658151822
 SkinnedMeshRenderer:
@@ -776,7 +776,7 @@ Transform:
   - {fileID: 6907978331822422196}
   - {fileID: 2619938459661067897}
   m_Father: {fileID: 7574486574114336904}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1203986720534914099
 GameObject:
@@ -1458,7 +1458,7 @@ Transform:
   m_Children:
   - {fileID: 161985988164363687}
   m_Father: {fileID: 6907978331822422196}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3763112325427510530
 GameObject:
@@ -1699,7 +1699,7 @@ Transform:
   m_Children:
   - {fileID: 4047236201593577762}
   m_Father: {fileID: 6907978331822422196}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &6830112456469921728
 Rigidbody:
@@ -1807,7 +1807,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7574486574114336904}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4506220194227056851
 MonoBehaviour:
@@ -2230,7 +2230,7 @@ Transform:
   m_GameObject: {fileID: 6100380602332556648}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 179.5, z: -35.6}
-  m_LocalScale: {x: 60000, y: 60000, z: 60000}
+  m_LocalScale: {x: 35000, y: 35000, z: 35000}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1561955474837282838}
@@ -3029,7 +3029,6 @@ Transform:
   m_LocalScale: {x: 0.012, y: 0.012, z: 0.012}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8810181075003313445}
   - {fileID: 4506220194227056848}
   - {fileID: 8446940582937011999}
   - {fileID: 1561955474837282838}
@@ -3202,6 +3201,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8810181075003313445}
   - {fileID: 7805673301702404625}
   - {fileID: 7805673300222326527}
   - {fileID: 3645132618804065310}
@@ -27781,7 +27781,7 @@ Transform:
   m_Children:
   - {fileID: 7805673301002832515}
   m_Father: {fileID: 6907978331822422196}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &7805673300222326525
 ParticleSystem:
@@ -86173,7 +86173,7 @@ Transform:
   - {fileID: 7805673299877699899}
   - {fileID: 7805673300562008485}
   m_Father: {fileID: 6907978331822422196}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7859194939786558626
 GameObject:
@@ -86582,7 +86582,7 @@ Transform:
   m_Children:
   - {fileID: 8446940582992559087}
   m_Father: {fileID: 7574486574114336904}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8446940582981424245
 GameObject:
@@ -86907,12 +86907,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8810181075003313446}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.00000012036878, z: -0.0000009185833, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 83.333336, y: 83.333336, z: 83.333336}
+  m_LocalScale: {x: 83.333336, y: 83.33335, z: 83.33335}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7574486574114336904}
+  m_Father: {fileID: 6907978331822422196}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8810181075003313444
@@ -86927,7 +86927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b514423a757dbc149b514356d28938bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 7625552384554086097}
+  _player: {fileID: 7625552384554086096}
 --- !u!1 &8830923083810154791
 GameObject:
   m_ObjectHideFlags: 0
@@ -86961,7 +86961,7 @@ Transform:
   m_Children:
   - {fileID: 4993895571214007114}
   m_Father: {fileID: 6907978331822422196}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &8830923083810154968
 Rigidbody:

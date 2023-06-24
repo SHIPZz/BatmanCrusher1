@@ -35,6 +35,7 @@ public class CanvasGroupAlphaHandler : MonoBehaviour
 
     [SerializeField] private Button _advertisingButton;
     [SerializeField] private Button _closingLeaderboardButton;
+    private PlayingAdvertisingHandler _playingAdvertisingHandler;
 
     public event Action PlayCanvasDisabled;
 
@@ -62,7 +63,7 @@ public class CanvasGroupAlphaHandler : MonoBehaviour
         _closingLeaderboardButton.onClick.AddListener(OnClosingLeaderboardButtonClicked);
         _enemyLeaderboard.DataLoaded += OpenLeadboard;
         Wallet.Instance.MoneyEnough += OnPlayingInputClicked;
-        PlayingAdvertisingHandler.ShortAdClosed += EnableHud;
+        _playingAdvertisingHandler.ShortAdClosed += EnableHud;
     }
 
     private void OnDisable()
@@ -81,9 +82,14 @@ public class CanvasGroupAlphaHandler : MonoBehaviour
         _loadingCanvasEvent.Loaded -= OnCanvasLoadingEnabled;
         _advertisingButton.onClick.RemoveListener(EnableHud);
         _closingLeaderboardButton.onClick.RemoveListener(OnClosingLeaderboardButtonClicked);
-        PlayingAdvertisingHandler.ShortAdClosed -= EnableHud;
         //_playButton.onClick.RemoveListener(OnPlayingInputClicked);
         Wallet.Instance.MoneyEnough -= OnPlayingInputClicked;
+    }
+
+    public void SetPlayingAdvertisingHandler(PlayingAdvertisingHandler playingAdvertisingHandler)
+    {
+        _playingAdvertisingHandler = playingAdvertisingHandler;
+        _playingAdvertisingHandler.ShortAdClosed += EnableHud;
     }
 
     private void OnClosingLeaderboardButtonClicked()

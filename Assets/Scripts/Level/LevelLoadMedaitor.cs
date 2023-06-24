@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,6 +7,7 @@ public class LevelLoadMedaitor : MonoBehaviour
 {
     [SerializeField] private List<NextLevelView> _nextLevelViews;
     [SerializeField] private LevelLoader _loader;
+    [SerializeField] private List<PlayingAdvertisingHandler> _playingAdvertisingHandlers;
     
     private readonly int _firstLevel = 1;
     private int _currentLevel;
@@ -17,10 +19,13 @@ public class LevelLoadMedaitor : MonoBehaviour
             view.ClaimButtonClicked += LoadNextLevelAfterClaimButton;
             view.RestartButtonClicked += RestartGame;
         }
-        
-        PlayingAdvertisingHandler.LongAdClosed += LoadNextLevelAfterAd;
+
+        foreach (var playingAdvertisingHandler in _playingAdvertisingHandlers)
+        {
+            playingAdvertisingHandler.LongAdClosed += LoadNextLevelAfterAd;
+        }
     }
-    
+
     private void OnDisable()
     {
         foreach (var view in _nextLevelViews)
@@ -29,7 +34,10 @@ public class LevelLoadMedaitor : MonoBehaviour
             view.RestartButtonClicked -= RestartGame;
         }
         
-        PlayingAdvertisingHandler.LongAdClosed -= LoadNextLevelAfterAd;
+        foreach (var playingAdvertisingHandler in _playingAdvertisingHandlers)
+        {
+            playingAdvertisingHandler.LongAdClosed -= LoadNextLevelAfterAd;
+        }
     }
 
     public void LoadLevel(int level)

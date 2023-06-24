@@ -22,13 +22,17 @@ namespace LvlInit
         [SerializeField] private PlayerSelectedCharacter _playerSelectedCharacter;
         [SerializeField] private GameObject _distanceCanvas;
         [SerializeField] private LevelLoadMedaitor _levelLoadMedaitor;
+        [SerializeField] private PlayingAdvertisingHandler _playingAdvertisingHandler;
 
         private readonly float _delayForGettingData = 1.5f;
         private List<EnemyObjectSpawner> _objectSpawners;
         private float _initialCameraPositionY;
+        private HealthRecoveryEvent _healthRecoveryEvent;
 
         private void Awake()
         {
+            _canvasAlphaState.SetPlayingAdvertisingHandler(_playingAdvertisingHandler);
+            _audioVolumeHandler.SetPlayingAdvertisingHandler(_playingAdvertisingHandler);
             _initialCameraPositionY = _camera.transform.position.y;
             _objectSpawners = _disablineGameObject.EnemyObjectSpawners;
             var position = _camera.transform.position;
@@ -120,7 +124,8 @@ namespace LvlInit
             _deathCanvasEventView.enabled = true;
             _disablineGameObject.enabled = true;
 
-            print(player);
+            _healthRecoveryEvent = player.GetComponentInChildren<HealthRecoveryEvent>();
+            _healthRecoveryEvent.SetPlayingAdvertisingHandler(_playingAdvertisingHandler);
 
             //_healthBarState.enabled = true;
 

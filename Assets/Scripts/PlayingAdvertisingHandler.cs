@@ -8,28 +8,31 @@ public class PlayingAdvertisingHandler : MonoBehaviour
     [SerializeField] private Button _advertisingVictoryButton;
     [SerializeField] private Button _advertisingDeathButton;
 
-    public static event Action RewardedCallbackPlayed;
-    public static event Action ShortAdClosed;
-    public static event Action LongAdClosed;
+    public Button AdvertisingButton =>
+        _advertisingVictoryButton;
+
+    public event Action RewardedCallbackPlayed;
+    public event Action ShortAdClosed;
+    public event Action LongAdClosed;
 
     private void OnEnable()
     {
-        _advertisingVictoryButton.onClick.AddListener(See);
-        _advertisingDeathButton.onClick.AddListener(SeeShortAdvert);
+        _advertisingVictoryButton.onClick.AddListener(SeeLongAd);
+        _advertisingDeathButton.onClick.AddListener(SeeShortAd);
     }
 
     private void OnDisable()
     {
-        _advertisingVictoryButton.onClick.RemoveListener(See);
-        _advertisingDeathButton.onClick.RemoveListener(SeeShortAdvert);
+        _advertisingVictoryButton.onClick.RemoveListener(SeeLongAd);
+        _advertisingDeathButton.onClick.RemoveListener(SeeShortAd);
     }
 
-    public void See()
+    private void SeeLongAd()
     {
         VideoAd.Show(OnOpenCallback, OnRewardedCallback, OnCloseCallback, OnErrorCallback);
     }
 
-    public void SeeShortAdvert()
+    private void SeeShortAd()
     {
         InterstitialAd.Show(OnOpenCallback, OnCloseCallback, OnErrorCallback);
     }
@@ -47,7 +50,6 @@ public class PlayingAdvertisingHandler : MonoBehaviour
     private void OnCloseCallback(bool obj)
     {
         Time.timeScale = 1f;
-        //Invoke(nameof(InvokeEvent()))
         ShortAdClosed?.Invoke();
     }
 
@@ -60,8 +62,4 @@ public class PlayingAdvertisingHandler : MonoBehaviour
     {
         Time.timeScale = 0f;
     }
-
-    //private void InvokeEvent(Action action) =>
-    //    action?.Invoke();
-
 }

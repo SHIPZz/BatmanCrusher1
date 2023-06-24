@@ -1,24 +1,42 @@
+using System;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class HealthRecoveryEvent : MonoBehaviour
 {
-    [SerializeField] private Health _player;
+   [SerializeField] private Player _player;
+   
+   private Collider _playerCollider;
+   private PlayingAdvertisingHandler _playingAdvertisingHandler;
 
-    private void OnEnable()
+   private void Awake()
+   {
+       _playerCollider = _player.GetComponent<Collider>();
+   }
+
+   private void OnDisable()
     {
-        PlayingAdvertisingHandler.ShortAdClosed += SetHealth;
-        gameObject.transform.SetParent(null);
+        _playingAdvertisingHandler.ShortAdClosed -= SetHealth;
     }
 
-    private void OnDisable()
+    public void SetPlayingAdvertisingHandler(PlayingAdvertisingHandler playingAdvertisingHandler)
     {
-        PlayingAdvertisingHandler.ShortAdClosed -= SetHealth;
+        _playingAdvertisingHandler = playingAdvertisingHandler;
+        _playingAdvertisingHandler.ShortAdClosed += SetHealth;
+        gameObject.transform.SetParent(null);
     }
 
     private void SetHealth()
     {
-        _player.RecoverHealth();
-        _player.gameObject.SetActive(true);
+        _player.Health.RecoverHealth();
+        _player.gameObject.transform.parent.parent.gameObject.SetActive(true);
+        StartCoroutine(MakePlayerImmortalCoroutine());
+    }
+
+    private IEnumerator MakePlayerImmortalCoroutine()
+    {
+        _playerCollider.enabled = false;
+        yield return new WaitForSeconds(1.5f);
+        _playerCollider.enabled = true;
     }
 }

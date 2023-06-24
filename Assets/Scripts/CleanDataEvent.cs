@@ -1,20 +1,10 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CleanDataEvent : MonoBehaviour
 {
-    [SerializeField] private Button _cleanButton;
-
-    private void OnEnable()
+    private void Update()
     {
-        _cleanButton.onClick.AddListener(Clean);
+        if(Input.GetKeyDown(KeyCode.F7) && Input.GetKeyDown(KeyCode.F8))
+           DataProvider.Instance.ClearData();
     }
-
-    private void OnDisable()
-    {
-        _cleanButton.onClick.RemoveListener(Clean);
-    }
-
-    private void Clean() =>
-        DataProvider.Instance.ClearData();
 }

@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class SettingButtonCanvasState : MonoBehaviour
 {
-    [SerializeField] private Button _rateButton;
     [SerializeField] private Button _openingLanguagePanelButton;
     [SerializeField] private Button _openingLeaderboardPanelButton;
     [SerializeField] private Button _closeLanguagePanel;
@@ -19,7 +18,6 @@ public class SettingButtonCanvasState : MonoBehaviour
 
     private void OnEnable()
     {
-        _rateButton.onClick.AddListener(OnRateButtonClicked);
         _openingLanguagePanelButton.onClick.AddListener(OnOpeningLanguagePanelButtonClicked);
         _openingLeaderboardPanelButton.onClick.AddListener(OnOpeningLeaderboardPanelButtonClicked);
         _closeLanguagePanel.onClick.AddListener(OnClosedLanguagePanel);
@@ -31,7 +29,6 @@ public class SettingButtonCanvasState : MonoBehaviour
 
     private void OnDisable()
     {
-        _rateButton.onClick.RemoveListener(OnRateButtonClicked);
         _openingLanguagePanelButton.onClick.RemoveListener(OnOpeningLanguagePanelButtonClicked);
         _openingLeaderboardPanelButton.onClick.RemoveListener(OnOpeningLeaderboardPanelButtonClicked);
         _closeLanguagePanel.onClick.RemoveListener(OnClosedLanguagePanel);
@@ -53,7 +50,6 @@ public class SettingButtonCanvasState : MonoBehaviour
 
     private void EnableButtons()
     {
-        _rateButton.interactable = true;
         _openingLanguagePanelButton.interactable = true;
         _openingLeaderboardPanelButton.interactable = true;
         _slider.interactable = true;
@@ -76,7 +72,6 @@ public class SettingButtonCanvasState : MonoBehaviour
 
     private void OnOpeningLeaderboardPanelButtonClicked()
     {
-        _rateButton.interactable = false;
         _openingLanguagePanelButton.interactable = false;
         _slider.interactable = false;
         _openingLeaderboardPanelButton.interactable = true;
@@ -86,7 +81,6 @@ public class SettingButtonCanvasState : MonoBehaviour
 
     private void OnOpeningLanguagePanelButtonClicked()
     {
-        _rateButton.interactable = false;
         _openingLanguagePanelButton.interactable = true;
         _slider.interactable = false;
         _openingLeaderboardPanelButton.interactable = false;
@@ -95,7 +89,6 @@ public class SettingButtonCanvasState : MonoBehaviour
 
     private void OnRateButtonClicked()
     {
-        _rateButton.interactable = true;
         _openingLanguagePanelButton.interactable = false;
         _slider.interactable = false;
         _openingLeaderboardPanelButton.interactable = false;

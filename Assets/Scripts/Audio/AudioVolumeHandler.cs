@@ -23,11 +23,7 @@ public class AudioVolumeHandler : MonoBehaviour
         _slider.value;
 
     private float _lastVolumeValue;
-
-    // private void Start()
-    // {
-    //     SetVolume(DataProvider.Instance.GetVolume());
-    // }
+    private PlayingAdvertisingHandler _playingAdvertisingHandler;
 
     private void OnEnable()
     {
@@ -38,7 +34,6 @@ public class AudioVolumeHandler : MonoBehaviour
         _canvasAlphaState.PlayCanvasDisabled += RestartMusic;
         _claimButton.onClick.AddListener(StopMusic);
         _advertisingButton.onClick.AddListener(StopMusic);
-        PlayingAdvertisingHandler.ShortAdClosed += RestartMusic;
 
         foreach (var spawner in _spawners)
             spawner.AudiosReceived += FillList;
@@ -48,7 +43,7 @@ public class AudioVolumeHandler : MonoBehaviour
     {
         _victoryCanvas.CanvasTurned -= StopMusic;
         _claimButton.onClick.RemoveListener(StopMusic);
-        PlayingAdvertisingHandler.ShortAdClosed -= RestartMusic;
+        _playingAdvertisingHandler.ShortAdClosed -= RestartMusic;
         _advertisingButton.onClick.RemoveListener(StopMusic);
         _deathCanvas.CanvasTurned -= StopMusic;
         _canvasAlphaState.PlayCanvasDisabled -= RestartMusic;
@@ -59,14 +54,17 @@ public class AudioVolumeHandler : MonoBehaviour
             spawner.AudiosReceived -= FillList;
     }
 
-    public float GetVolume() =>
-        _slider.value;
+    public void SetPlayingAdvertisingHandler(PlayingAdvertisingHandler playingAdvertisingHandler)
+    {
+        _playingAdvertisingHandler = playingAdvertisingHandler;
+        _playingAdvertisingHandler.ShortAdClosed += RestartMusic;
+    }
 
     public void SetVolume(float value)
     {
         if (value == 0)
             value = 0.1f;
-        
+
         _lastVolumeValue = value;
         _slider.value = value;
         Debug.Log($"Set - {_slider.value}");

@@ -9,13 +9,13 @@ public class DataProvider
 
     private readonly ISaveService _saveLoadSystem;
     private static DataProvider _instance;
-    
+
     private GameData _gameData;
 
     public static DataProvider Instance => _instance ??= new DataProvider();
-    
+
     public event Action<int> ChoosedPlayer;
-    public event Action<int> LevelChanged; 
+    public event Action<int> LevelChanged;
 
     private DataProvider()
     {
@@ -64,13 +64,13 @@ public class DataProvider
         _saveLoadSystem.Save(_gameData);
     }
 
-    public int GetCharacter() => 
+    public int GetCharacter() =>
         _gameData.ChosenCharacter;
-    
-    public int GetImage() => 
+
+    public int GetImage() =>
         _gameData.ImageId;
 
-    public int GetMoney() => 
+    public int GetMoney() =>
         _gameData.Money;
 
     public float GetVolume() =>
@@ -79,7 +79,7 @@ public class DataProvider
     public int GetLevel() =>
         _gameData.Level;
 
-    public int GetEnemyCount() => 
+    public int GetEnemyCount() =>
         _gameData.EnemyCount;
 
     public void ClearData()
@@ -97,7 +97,7 @@ public class DataProvider
         if (!IsPlayerPurchased(characterId))
         {
             _gameData.CharactersId.Add(characterId);
-            
+
             _gameData.CharactersKey = JsonUtility.ToJson(_gameData.CharactersId);
 
             _saveLoadSystem.Save(_gameData);
@@ -107,9 +107,9 @@ public class DataProvider
     public async void LoadInitialData()
     {
         _gameData = await _saveLoadSystem.Load();
-        
+
         Debug.Log(_gameData + "- gameData");
-        
+
         _gameData.CharactersId.Add(Constant.BatmanId);
         _gameData.CharactersKey = JsonUtility.ToJson(_gameData.CharactersId);
         _gameData.CharactersId = JsonUtility.FromJson<List<int>>(_gameData.CharactersKey);

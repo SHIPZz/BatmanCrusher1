@@ -11,7 +11,7 @@ public class EnemyDestruction : MonoBehaviour
 
     public event Action<Transform> Destroyed;
 
-    private readonly float _initalCameraZoom = 35;
+    private readonly float _initalCameraZoom = 40;
     private readonly float _targetCameraZoom = 60;
     private readonly float _targetTimeScale = 0.1f;
     private readonly float _duration = 5f;
