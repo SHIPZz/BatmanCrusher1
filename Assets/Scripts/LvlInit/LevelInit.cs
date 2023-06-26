@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Agava.WebUtility;
 using DG.Tweening;
 using UnityEngine;
+using Device = Agava.YandexGames.Device;
+using DeviceType = Agava.YandexGames.DeviceType;
 
 namespace LvlInit
 {
@@ -60,13 +63,21 @@ namespace LvlInit
         private void OnEnable()
         {
             _playerSpawner.Spawned += Configure;
+            WebApplication.InBackgroundChangeEvent += OnInBackgroundChange;
             DataProvider.Instance.LevelChanged += SetLevelForLevelMediator;
         }
 
         private void OnDisable()
         {
             DataProvider.Instance.LevelChanged -= SetLevelForLevelMediator;
+            WebApplication.InBackgroundChangeEvent -= OnInBackgroundChange;
             _playerSpawner.Spawned -= Configure;
+        }
+        
+        private void OnInBackgroundChange(bool inBackground)
+        {
+            AudioListener.pause = inBackground;
+            AudioListener.volume = inBackground ? 0f : 1f;
         }
 
         private void SetDistanceCanvasActive(bool isActive)

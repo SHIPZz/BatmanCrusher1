@@ -14,10 +14,7 @@ public class AudioVolumeHandler : MonoBehaviour
     [SerializeField] private CanvasGroupAlphaHandler _canvasAlphaState;
     [SerializeField] private Button _claimButton;
     [SerializeField] private Button _advertisingButton;
-    [SerializeField] private PlayingAdvertisingHandler _advertisingHandler;
     [SerializeField] private EnemyObjectSpawner[] _spawners;
-
-    public event Action<float> ValueChanged;
 
     public float SliderValue =>
         _slider.value;
@@ -27,7 +24,7 @@ public class AudioVolumeHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        _victoryCanvas.CanvasTurned += StopMusic;
+        // _victoryCanvas.CanvasTurned += StopMusic;
         _sceneLoaderHandler.SceneStartedLoading += StopMusic;
         _deathCanvas.CanvasTurned += StopMusic;
         _slider.onValueChanged.AddListener(OnValueChanged);
@@ -41,7 +38,7 @@ public class AudioVolumeHandler : MonoBehaviour
 
     private void OnDisable()
     {
-        _victoryCanvas.CanvasTurned -= StopMusic;
+        // _victoryCanvas.CanvasTurned -= StopMusic;
         _claimButton.onClick.RemoveListener(StopMusic);
         _playingAdvertisingHandler.ShortAdClosed -= RestartMusic;
         _advertisingButton.onClick.RemoveListener(StopMusic);

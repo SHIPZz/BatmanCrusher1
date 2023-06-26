@@ -14,7 +14,9 @@ public class Chest : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        gameObject.AddComponent<Target>();
+
+        if (gameObject.GetComponent<Target>() == null)
+            gameObject.AddComponent<Target>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -23,7 +25,7 @@ public class Chest : MonoBehaviour
 
         EffectPlayed?.Invoke();
         Achieved?.Invoke(this);
-        GetComponent<Collider>().enabled= false;
+        GetComponent<Collider>().enabled = false;
         //this.SetActive(gameObject, false, 1.5f);
     }
 }

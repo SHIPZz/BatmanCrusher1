@@ -12,6 +12,7 @@ public class PlayingCanvas : MonoBehaviour
     private void Awake()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
+        // GetComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ConstantPixelSize;
         _canvasGroup.alpha = 1;
     }
 

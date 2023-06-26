@@ -6,8 +6,6 @@ public class VictoryCanvasEvent : MonoBehaviour
     [SerializeField] private ChestStorage _chestStorage;
     [SerializeField] private VictoryView _victoryView;
 
-    public event Action CanvasTurned;
-
     private void OnEnable()
     {
         _chestStorage.AllStuffAchieved += OnLevelEnded;

@@ -31,9 +31,10 @@ public class CubePartsSpawningByDyingEnemy : MonoBehaviour
     
     private void Spawn()
     {
+        GetComponent<MeshRenderer>().enabled = false;
         this.SetKinematic(_parts, false);
         SetActive(true);
-        this.SetActive(gameObject, false, 0.3f);
+        this.SetActive(gameObject,false,0.3f);
     }
     
     private void SetActive(bool isActive)

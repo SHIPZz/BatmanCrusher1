@@ -49,7 +49,7 @@ public class CanvasGroupAlphaHandler : MonoBehaviour
     private void OnEnable()
     {
         _deathCanvasEventView.CanvasTurned += OnDeathCanvasEventViewTurned;
-        _victoryCanvasEventView.CanvasTurned += OnVictoryCanvasTurned;
+        // _victoryCanvasEventView.CanvasTurned += OnVictoryCanvasTurned;
         _stopButton.onClick.AddListener(OnStopButtonClicked);
         _closeMenuCanvas.onClick.AddListener(OnClosingMenuCanvasClicked);
         _settingButton.onClick.AddListener(OnSettingButtonClicked);
@@ -68,7 +68,7 @@ public class CanvasGroupAlphaHandler : MonoBehaviour
 
     private void OnDisable()
     {
-        _victoryCanvasEventView.CanvasTurned -= OnVictoryCanvasTurned;
+        // _victoryCanvasEventView.CanvasTurned -= OnVictoryCanvasTurned;
         _deathCanvasEventView.CanvasTurned -= OnDeathCanvasEventViewTurned;
         _stopButton.onClick.RemoveListener(OnStopButtonClicked);
         _closingSettingButton.onClick.RemoveListener(OnClosingSettingButtonClicked);
