@@ -12,17 +12,17 @@ public class LevelLoadMedaitor : MonoBehaviour
     private readonly int _firstLevel = 1;
     private int _currentLevel;
 
-    private void OnEnable()
+    private void Awake()
     {
         foreach (var view in _nextLevelViews)
         {
             view.ClaimButtonClicked += LoadNextLevelAfterClaimButton;
             view.RestartButtonClicked += RestartGame;
         }
-
+        
         foreach (var playingAdvertisingHandler in _playingAdvertisingHandlers)
         {
-            playingAdvertisingHandler.LongAdClosed += LoadNextLevelAfterAd;
+            playingAdvertisingHandler.RewardedCallbackPlayed += LoadNextLevelAfterAd;
         }
     }
 
@@ -36,7 +36,7 @@ public class LevelLoadMedaitor : MonoBehaviour
         
         foreach (var playingAdvertisingHandler in _playingAdvertisingHandlers)
         {
-            playingAdvertisingHandler.LongAdClosed -= LoadNextLevelAfterAd;
+            playingAdvertisingHandler.RewardedCallbackPlayed -= LoadNextLevelAfterAd;
         }
     }
 

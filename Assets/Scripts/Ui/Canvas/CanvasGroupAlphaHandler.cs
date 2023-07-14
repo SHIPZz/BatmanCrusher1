@@ -101,7 +101,8 @@ public class CanvasGroupAlphaHandler : MonoBehaviour
     private void EnableHud()
     {
         _deathCanvas.MoveCanvasAlpha(0, 1);
-        this.SetActive(_deathCanvas.gameObject, false, 1f);
+        _deathCanvas.gameObject.SetActive(false);
+        // this.SetActive(_deathCanvas.gameObject, false, 1f);
 
         _buttonCanvas.gameObject.SetActive(true);
         _buttonCanvas.MoveCanvasAlpha(1, 1);

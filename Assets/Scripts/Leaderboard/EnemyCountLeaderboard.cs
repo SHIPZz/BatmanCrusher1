@@ -17,6 +17,15 @@ public class EnemyCountLeaderboard : MonoBehaviour
 
     public event Action DataNotLoaded;
 
+    private void Start()
+    {
+        Leaderboard.GetEntries(Name, (result) =>
+        {
+            Debug.Log($"My rank = {result.userRank}");
+            FillArray(result);
+        });
+    }
+
     private void OnEnable()
     {
         _openLeaderboard.onClick.AddListener(OnEnableLeaderboard);

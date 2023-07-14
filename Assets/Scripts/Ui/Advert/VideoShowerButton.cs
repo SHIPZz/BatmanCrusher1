@@ -28,7 +28,8 @@ public class VideoShowerButton : MonoBehaviour
 
     private void OnClicked()
     {
-        VideoAd.Show(OnOpenCallback, OnRewardedCallback, OnCloseCallback, OnErrorCallback);
+     
+        // VideoAd.Show(OnOpenCallback, OnRewardedCallback, OnCloseCallback, OnErrorCallback);
     }
 
     private void OnRewardedCallback()

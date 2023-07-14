@@ -29,7 +29,8 @@ public class PlayingAdvertisingHandler : MonoBehaviour
 
     private void SeeLongAd()
     {
-        VideoAd.Show(OnOpenCallback, OnRewardedCallback, OnCloseCallback, OnErrorCallback);
+        RewardedCallbackPlayed?.Invoke();
+        // VideoAd.Show(OnOpenCallback, OnRewardedCallback, OnCloseCallback, OnErrorCallback);
     }
 
     private void SeeShortAd()

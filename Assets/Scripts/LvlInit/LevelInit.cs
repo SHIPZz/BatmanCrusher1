@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Agava.WebUtility;
+using Agava.YandexGames;
 using DG.Tweening;
 using UnityEngine;
-using Device = Agava.YandexGames.Device;
-using DeviceType = Agava.YandexGames.DeviceType;
 
 namespace LvlInit
 {
@@ -31,9 +30,11 @@ namespace LvlInit
         private List<EnemyObjectSpawner> _objectSpawners;
         private float _initialCameraPositionY;
         private HealthRecoveryEvent _healthRecoveryEvent;
+        private bool _isClosed = false;
 
         private void Awake()
         {
+            // InterstitialAd.Show();
             _canvasAlphaState.SetPlayingAdvertisingHandler(_playingAdvertisingHandler);
             _audioVolumeHandler.SetPlayingAdvertisingHandler(_playingAdvertisingHandler);
             _initialCameraPositionY = _camera.transform.position.y;
@@ -51,7 +52,7 @@ namespace LvlInit
             ConfigurePlayCanvas(false);
 
             SetPlayerForObjectSpawners();
-        
+
             DataProvider.Instance.LoadInitialData();
         }
 
@@ -73,7 +74,7 @@ namespace LvlInit
             WebApplication.InBackgroundChangeEvent -= OnInBackgroundChange;
             _playerSpawner.Spawned -= Configure;
         }
-        
+
         private void OnInBackgroundChange(bool inBackground)
         {
             AudioListener.pause = inBackground;
@@ -101,7 +102,15 @@ namespace LvlInit
         private IEnumerator InitializeDependencies()
         {
             yield return new WaitForSeconds(_delayForGettingData);
-            _levelLoadMedaitor.LoadLevel(DataProvider.Instance.GetLevel());            
+
+            if (DataProvider.Instance.GetLevel() > 1)
+            {
+                InterstitialAd.Show(OnOpenCallback, OnCloseCallback, OnErrorCallback);
+                yield return new WaitUntil(() => _isClosed);
+            }
+            
+            _levelLoadMedaitor.LoadLevel(DataProvider.Instance.GetLevel());
+
             _playerSelectedCharacter.SetInitialCharacter(DataProvider.Instance.GetCharacter());
             _imageHandler.SetImage(DataProvider.Instance.GetImage());
             _audioVolumeHandler.SetVolume(DataProvider.Instance.GetVolume());
@@ -116,6 +125,15 @@ namespace LvlInit
             SetDistanceCanvasActive(true);
             ConfigurePlayCanvas(true);
         }
+
+        private void OnErrorCallback(string obj) { }
+
+        private void OnCloseCallback(bool obj)
+        {
+            _isClosed = true;
+        }
+
+        private void OnOpenCallback() { }
 
         private void ConfigurePlayCanvas(bool isActive)
         {
