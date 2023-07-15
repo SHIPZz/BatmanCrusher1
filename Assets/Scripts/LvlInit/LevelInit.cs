@@ -116,7 +116,7 @@ namespace LvlInit
             _imageHandler.SetImage(DataProvider.Instance.GetImage());
             _audioVolumeHandler.SetVolume(DataProvider.Instance.GetVolume());
             _levelText.SetSceneIndex(DataProvider.Instance.GetLevel());
-            // _enemyCountLeaderboard.LoadLeaderboard();
+            _enemyCountLeaderboard.LoadLeaderboard();
             Wallet.Instance.LoadMoney(DataProvider.Instance.GetMoney());
             _sceneLoaderHandler.SetLevel(DataProvider.Instance.GetLevel());
             _enemyDestroyingHandler.SetCount(DataProvider.Instance.GetEnemyCount());

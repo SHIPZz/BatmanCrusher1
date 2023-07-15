@@ -16,6 +16,7 @@ public class EnemyCountLeaderboard : MonoBehaviour
     public event Action DataLoaded;
 
     public event Action DataNotLoaded;
+    
 
     private void OnEnable()
     {
@@ -27,7 +28,16 @@ public class EnemyCountLeaderboard : MonoBehaviour
         _openLeaderboard.onClick.RemoveListener(OnEnableLeaderboard);
     }
 
-    public void OnEnableLeaderboard()
+    public void LoadLeaderboard()
+    {
+        Leaderboard.GetEntries(Name, (result) =>
+        {
+            Debug.Log($"My rank = {result.userRank}");
+            FillArray(result);
+        });
+    }
+
+    private void OnEnableLeaderboard()
     {
         if (PlayerAccount.IsAuthorized)
         {
@@ -68,14 +78,5 @@ public class EnemyCountLeaderboard : MonoBehaviour
 
             //string name = result.entries[i].player.ToString();
         }
-    }
-
-    public void LoadLeaderboard()
-    {
-        Leaderboard.GetEntries(Name, (result) =>
-        {
-            Debug.Log($"My rank = {result.userRank}");
-            FillArray(result);
-        });
     }
 }
