@@ -28,7 +28,8 @@ public class VideoShowerButton : MonoBehaviour
 
     private void OnClicked()
     {
-     
+        SuccessPlayed?.Invoke();
+        // NotifyClick();
         // VideoAd.Show(OnOpenCallback, OnRewardedCallback, OnCloseCallback, OnErrorCallback);
     }
 
@@ -55,7 +56,7 @@ public class VideoShowerButton : MonoBehaviour
 
     private void NotifyClick()
     {
-        Time.timeScale = 1f;
+        // Time.timeScale = 1f;
         Clicked?.Invoke();
     }
 }

@@ -63,7 +63,7 @@ public class CanvasGroupAlphaHandler : MonoBehaviour
         _closingLeaderboardButton.onClick.AddListener(OnClosingLeaderboardButtonClicked);
         _enemyLeaderboard.DataLoaded += OpenLeadboard;
         Wallet.Instance.MoneyEnough += OnPlayingInputClicked;
-        _playingAdvertisingHandler.ShortAdClosed += EnableHud;
+        _playingAdvertisingHandler.DeathRewardedCallbackPlayed += EnableHud;
     }
 
     private void OnDisable()
@@ -89,7 +89,7 @@ public class CanvasGroupAlphaHandler : MonoBehaviour
     public void SetPlayingAdvertisingHandler(PlayingAdvertisingHandler playingAdvertisingHandler)
     {
         _playingAdvertisingHandler = playingAdvertisingHandler;
-        _playingAdvertisingHandler.ShortAdClosed += EnableHud;
+        _playingAdvertisingHandler.DeathRewardedCallbackPlayed += EnableHud;
     }
 
     private void OnClosingLeaderboardButtonClicked()
@@ -147,7 +147,7 @@ public class CanvasGroupAlphaHandler : MonoBehaviour
         _menuCanvas.alpha = 0;
     }
 
-    private void DisableAll()
+    public void DisableAll()
     {
         _playCanvas.gameObject.SetActive(false);
         _countCanvas.gameObject.SetActive(false);

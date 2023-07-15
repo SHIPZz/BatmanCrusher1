@@ -40,7 +40,7 @@ public class AudioVolumeHandler : MonoBehaviour
     {
         // _victoryCanvas.CanvasTurned -= StopMusic;
         _claimButton.onClick.RemoveListener(StopMusic);
-        _playingAdvertisingHandler.ShortAdClosed -= RestartMusic;
+        _playingAdvertisingHandler.DeathRewardedCallbackPlayed -= RestartMusic;
         _advertisingButton.onClick.RemoveListener(StopMusic);
         _deathCanvas.CanvasTurned -= StopMusic;
         _canvasAlphaState.PlayCanvasDisabled -= RestartMusic;
@@ -54,7 +54,7 @@ public class AudioVolumeHandler : MonoBehaviour
     public void SetPlayingAdvertisingHandler(PlayingAdvertisingHandler playingAdvertisingHandler)
     {
         _playingAdvertisingHandler = playingAdvertisingHandler;
-        _playingAdvertisingHandler.ShortAdClosed += RestartMusic;
+        _playingAdvertisingHandler.DeathRewardedCallbackPlayed += RestartMusic;
     }
 
     public void SetVolume(float value)

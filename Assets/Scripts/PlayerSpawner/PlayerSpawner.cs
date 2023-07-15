@@ -1,21 +1,29 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour
 {
     [SerializeField] private int _health = 100;
-    
+
     public event Action<Player> Spawned;
 
     private GameFactory _gameFactory;
-    
+    private Dictionary<int, Func<Player>> _players;
     private int _playerId;
 
     private void Start()
     {
         _gameFactory = DependencyContainer.Get<GameFactory>();
-    }
 
+        _players = new Dictionary<int, Func<Player>>()
+        {
+            { Constant.SpiderManId, () => _gameFactory.CreateObject(Constant.SpiderManPrefab).GetComponentInChildren<Player>() },
+            {Constant.BatmanId, () => _gameFactory.CreateObject(Constant.BatmanPrefab).GetComponentInChildren<Player>() },
+            { Constant.WolverineId, () => _gameFactory.CreateObject(Constant.WolverinePrefab).GetComponentInChildren<Player>() },
+        };
+    }
+    
     private void OnEnable()
     {
         DataProvider.Instance.ChoosedPlayer += CreatePlayer;
@@ -31,31 +39,17 @@ public class PlayerSpawner : MonoBehaviour
 
     private void CreatePlayer(int characterId)
     {
-        Player player = null;
-
-        if (characterId == Constant.SpiderManId)
-        {
-            player = _gameFactory.CreateObject(Constant.SpiderPrefab).GetComponentInChildren<Player>();
-            
-        }
-        else if (characterId == Constant.WolverineId)
-        {
-            player = _gameFactory.CreateObject(Constant.WolverinePrefab).GetComponentInChildren<Player>();
-        }
-        else if (characterId == Constant.BatmanId)
-        {
-            player = _gameFactory.CreateObject(Constant.BatmanPrefab).GetComponentInChildren<Player>();
-        }
+        Player player = _players[characterId].Invoke();
 
         if (IsHealthSet(_health))
         {
             player.Health.MaxValue = _health;
             player.Health.InitialValue = _health;
         }
-        
+
         // player.transform.parent.SetParent(transform);
         player.transform.position = transform.position;
-        
+
         Spawned?.Invoke(player);
     }
 

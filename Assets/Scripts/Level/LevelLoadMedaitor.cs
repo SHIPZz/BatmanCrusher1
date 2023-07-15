@@ -16,13 +16,13 @@ public class LevelLoadMedaitor : MonoBehaviour
     {
         foreach (var view in _nextLevelViews)
         {
-            view.ClaimButtonClicked += LoadNextLevelAfterClaimButton;
+            view.ClaimButtonClicked += LoadNextLevel;
             view.RestartButtonClicked += RestartGame;
         }
         
         foreach (var playingAdvertisingHandler in _playingAdvertisingHandlers)
         {
-            playingAdvertisingHandler.RewardedCallbackPlayed += LoadNextLevelAfterAd;
+            playingAdvertisingHandler.RewardedCallbackPlayed += LoadNextLevel;
         }
     }
 
@@ -30,13 +30,13 @@ public class LevelLoadMedaitor : MonoBehaviour
     {
         foreach (var view in _nextLevelViews)
         {
-            view.ClaimButtonClicked -= LoadNextLevelAfterClaimButton;
+            view.ClaimButtonClicked -= LoadNextLevel;
             view.RestartButtonClicked -= RestartGame;
         }
         
         foreach (var playingAdvertisingHandler in _playingAdvertisingHandlers)
         {
-            playingAdvertisingHandler.RewardedCallbackPlayed -= LoadNextLevelAfterAd;
+            playingAdvertisingHandler.RewardedCallbackPlayed -= LoadNextLevel;
         }
     }
 
@@ -62,11 +62,6 @@ public class LevelLoadMedaitor : MonoBehaviour
         _loader.Load(_currentLevel);
         SceneManager.LoadScene(1);
     }
-
-    private void LoadNextLevelAfterAd()
-    {
-        LoadNextLevel();
-    }
     
     private void LoadNextLevelAfterClaimButton()
     {
@@ -80,7 +75,6 @@ public class LevelLoadMedaitor : MonoBehaviour
         
         // _loader.Load(_currentLevel);
 
-        print("113");
         Invoke(nameof(InvokeLoading), 0.1f);
     }
 

@@ -12,26 +12,28 @@ public class PlayingAdvertisingHandler : MonoBehaviour
         _advertisingVictoryButton;
 
     public event Action RewardedCallbackPlayed;
-    public event Action ShortAdClosed;
-    public event Action LongAdClosed;
+    public event Action DeathRewardedCallbackPlayed;
 
     private void OnEnable()
     {
         _advertisingVictoryButton.onClick.AddListener(SeeLongAd);
-        _advertisingDeathButton.onClick.AddListener(SeeShortAd);
+        _advertisingDeathButton.onClick.AddListener(SeeLongAdAfterDeathAd);
     }
 
     private void OnDisable()
     {
         _advertisingVictoryButton.onClick.RemoveListener(SeeLongAd);
-        _advertisingDeathButton.onClick.RemoveListener(SeeShortAd);
+        _advertisingDeathButton.onClick.RemoveListener(SeeLongAdAfterDeathAd);
     }
 
     private void SeeLongAd()
     {
-        RewardedCallbackPlayed?.Invoke();
-        // VideoAd.Show(OnOpenCallback, OnRewardedCallback, OnCloseCallback, OnErrorCallback);
+        // RewardedCallbackPlayed?.Invoke();
+        VideoAd.Show(OnOpenCallback, OnRewardedCallback, OnCloseCallback, OnErrorCallback);
     }
+
+    private void SeeLongAdAfterDeathAd() =>
+        VideoAd.Show(null, OnRewardedDealthCallback, OnCloseCallback);
 
     private void SeeShortAd()
     {
@@ -45,14 +47,17 @@ public class PlayingAdvertisingHandler : MonoBehaviour
     private void OnCloseCallback()
     {
         Time.timeScale = 1f;
-        LongAdClosed?.Invoke();
+        // LongAdClosed?.Invoke();
     }
 
     private void OnCloseCallback(bool obj)
     {
         Time.timeScale = 1f;
-        ShortAdClosed?.Invoke();
+        // DeathRewardedCallbackPlayed?.Invoke();
     }
+
+    private void OnRewardedDealthCallback() =>
+        DeathRewardedCallbackPlayed?.Invoke();
 
     private void OnRewardedCallback()
     {

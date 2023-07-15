@@ -276,6 +276,15 @@ MonoBehaviour:
       - "K\xFCresel"
       Flags: 000000
       Languages_Touch: []
+    - Term: Game over
+      TermType: 0
+      Description: 
+      Languages:
+      - Game over
+      - "\u0418\u0433\u0440\u0430 \u0437\u0430\u043A\u043E\u043D\u0447\u0435\u043D\u0430"
+      - Oyun bitti
+      Flags: 000000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: 

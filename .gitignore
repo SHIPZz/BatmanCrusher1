@@ -71,9 +71,11 @@ Assets/GameScene.unity
 Assets/Scenes/Test.unity
 Assets/LevelPrefab
 Assets/RayFire/Info/Documentation/OtherComponentsWIP.rtf
+Assets/RayFire/Info/Documentation/OtherComponentsWIP.rtf
 Assets/Plugins 1/RayFire
 Assets/Scripts/*.meta
 Assets/Scripts/Weapon
+Assets/PolygonFantasyHeroCharacters
 
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta

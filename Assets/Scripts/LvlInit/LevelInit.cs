@@ -25,6 +25,7 @@ namespace LvlInit
         [SerializeField] private GameObject _distanceCanvas;
         [SerializeField] private LevelLoadMedaitor _levelLoadMedaitor;
         [SerializeField] private PlayingAdvertisingHandler _playingAdvertisingHandler;
+        [SerializeField] private EnemyCountLeaderboard _enemyCountLeaderboard;
 
         private readonly float _delayForGettingData = 1.5f;
         private List<EnemyObjectSpawner> _objectSpawners;
@@ -103,7 +104,7 @@ namespace LvlInit
         {
             yield return new WaitForSeconds(_delayForGettingData);
 
-            if (DataProvider.Instance.GetLevel() > 1)
+            if (DataProvider.Instance.GetLevel() > 2)
             {
                 InterstitialAd.Show(OnOpenCallback, OnCloseCallback, OnErrorCallback);
                 yield return new WaitUntil(() => _isClosed);
@@ -115,6 +116,7 @@ namespace LvlInit
             _imageHandler.SetImage(DataProvider.Instance.GetImage());
             _audioVolumeHandler.SetVolume(DataProvider.Instance.GetVolume());
             _levelText.SetSceneIndex(DataProvider.Instance.GetLevel());
+            // _enemyCountLeaderboard.LoadLeaderboard();
             Wallet.Instance.LoadMoney(DataProvider.Instance.GetMoney());
             _sceneLoaderHandler.SetLevel(DataProvider.Instance.GetLevel());
             _enemyDestroyingHandler.SetCount(DataProvider.Instance.GetEnemyCount());

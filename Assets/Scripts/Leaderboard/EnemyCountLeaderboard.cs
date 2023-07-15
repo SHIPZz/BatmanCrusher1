@@ -12,19 +12,10 @@ public class EnemyCountLeaderboard : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] _scores;
     [SerializeField] private TextMeshProUGUI[] _ranks;
     [SerializeField] private Button _openLeaderboard;
-
+    
     public event Action DataLoaded;
 
     public event Action DataNotLoaded;
-
-    private void Start()
-    {
-        Leaderboard.GetEntries(Name, (result) =>
-        {
-            Debug.Log($"My rank = {result.userRank}");
-            FillArray(result);
-        });
-    }
 
     private void OnEnable()
     {
@@ -40,15 +31,10 @@ public class EnemyCountLeaderboard : MonoBehaviour
     {
         if (PlayerAccount.IsAuthorized)
         {
+            PlayerAccount.RequestPersonalProfileDataPermission();
+
             if (PlayerAccount.HasPersonalProfileDataPermission == false)
-            {
-                PlayerAccount.RequestPersonalProfileDataPermission();
-
-                if (PlayerAccount.HasPersonalProfileDataPermission == false)
-                    DataNotLoaded?.Invoke();
-
                 return;
-            }
 
             Leaderboard.GetEntries(Name, (result) =>
             {
@@ -61,6 +47,8 @@ public class EnemyCountLeaderboard : MonoBehaviour
         }
 
         PlayerAccount.Authorize();
+
+        DataLoaded?.Invoke();
     }
 
     private void FillArray(LeaderboardGetEntriesResponse result)
@@ -70,13 +58,24 @@ public class EnemyCountLeaderboard : MonoBehaviour
             _names[i].text = result.entries[i].player.publicName;
 
             if (string.IsNullOrEmpty(_names[i].text))
+            {
                 name = "Anonymous";
+                _names[i].text = name;
+            }
 
             _ranks[i].text = result.entries[i].rank.ToString();
             _scores[i].text = result.entries[i].score.ToString();
 
             //string name = result.entries[i].player.ToString();
-
         }
+    }
+
+    public void LoadLeaderboard()
+    {
+        Leaderboard.GetEntries(Name, (result) =>
+        {
+            Debug.Log($"My rank = {result.userRank}");
+            FillArray(result);
+        });
     }
 }

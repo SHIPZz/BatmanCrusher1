@@ -12,29 +12,29 @@ public class ButtonMenuCanvasState : MonoBehaviour, IButtonCanvas, IButtonCanvas
 
     private void OnEnable()
     {
-        _closingButton.onClick.AddListener(EnableButtons);
-        _closingNotEnoughMoneyButton.onClick.AddListener(EnableButtons);
+        // _closingButton.onClick.AddListener(EnableButtons);
+        // _closingNotEnoughMoneyButton.onClick.AddListener(EnableButtons);
     }
 
     private void OnDisable()
     {
-        _closingButton.onClick.RemoveListener(EnableButtons);
-        _closingNotEnoughMoneyButton.onClick.RemoveListener(EnableButtons);
+        // _closingButton.onClick.RemoveListener(EnableButtons);
+        // _closingNotEnoughMoneyButton.onClick.RemoveListener(EnableButtons);
     }
 
     public void DisableButtons()
     {
-        ControlButtonsInteraction(false);
+        // ControlButtonsInteraction(false);
     }
 
     public void EnableButtons()
     {
-        ControlButtonsInteraction(true);
+        // ControlButtonsInteraction(true);
     }
 
     public void ControlButtonsInteraction(bool isActive)
     {
-        _homeButton.interactable = isActive;
-        _resumptionButton.interactable = isActive;
+        // _homeButton.interactable = isActive;
+        // _resumptionButton.interactable = isActive;
     }
 }

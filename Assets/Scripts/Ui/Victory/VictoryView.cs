@@ -5,7 +5,7 @@ public class VictoryView : MonoBehaviour
 {
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private Button _claimButton;
-    [SerializeField] private VideoShowerButton _videoShowerButton;
+    [SerializeField] private PlayingAdvertisingHandler _playingAdvertisingHandler;
     [SerializeField] private RewardItemsView _rewardItemView;
 
     private IVictoryPresenter _presenter;
@@ -19,7 +19,7 @@ public class VictoryView : MonoBehaviour
         _canvasGroup.MoveCanvasAlpha(1, 1f);
     }
 
-    public void Hide()
+    private void Hide()
     {
         _rewardItemView.Hide();
         RemoveListeners();
@@ -30,14 +30,12 @@ public class VictoryView : MonoBehaviour
     private void AddListeners()
     {
         _claimButton.onClick.AddListener(OnClaimButtonClicked);
-        _videoShowerButton.Clicked += OnClaimButtonClicked;
-        _videoShowerButton.SuccessPlayed += OnRewardButtonClicked;
+        _playingAdvertisingHandler.RewardedCallbackPlayed += OnRewardButtonClicked;
     }
 
     private void RemoveListeners()
     {
-        _videoShowerButton.Clicked -= OnClaimButtonClicked;
-        _videoShowerButton.SuccessPlayed -= OnRewardButtonClicked;
+        _playingAdvertisingHandler.RewardedCallbackPlayed -= OnRewardButtonClicked;
         _claimButton.onClick.RemoveListener(OnClaimButtonClicked);
     }
 

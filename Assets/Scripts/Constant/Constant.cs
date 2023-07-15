@@ -10,7 +10,7 @@ public class Constant
     public const int MultiplierReward = 2;
     public const string BatmanPrefab = "Prefabs/BatmanSpring";
     public const string WolverinePrefab = "Prefabs/Wolverine";
-    public const string SpiderPrefab = "Prefabs/Spider-man";
+    public const string SpiderManPrefab = "Prefabs/SpiderMan";
     public const string ShadowPrefab = "Prefabs/Shadow";
     public const string DarkSpiderPrefab = "Prefabs/DarkSpider";
     public const string BatLordPrefab = "Prefabs/BatLord";

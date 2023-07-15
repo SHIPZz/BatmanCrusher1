@@ -19,9 +19,9 @@ public class DataProvider
 
     private DataProvider()
     {
-        if (PlayerAccount.IsAuthorized)
-            _saveLoadSystem = new YandexSaveSystem();
-        else
+        // if (PlayerAccount.IsAuthorized)
+        //     _saveLoadSystem = new YandexSaveSystem();
+        // else
             _saveLoadSystem = new PlayerPrefsSystem();
     }
 
@@ -60,7 +60,7 @@ public class DataProvider
     public void SaveEnemyCount(int enemyCount)
     {
         _gameData.EnemyCount = enemyCount;
-        Leaderboard.SetScore(nameof(EnemyCountLeaderboard), _gameData.EnemyCount);
+        // Leaderboard.SetScore(nameof(EnemyCountLeaderboard), _gameData.EnemyCount);
         _saveLoadSystem.Save(_gameData);
     }
 

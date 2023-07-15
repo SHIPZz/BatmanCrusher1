@@ -16,13 +16,13 @@ public class HealthRecoveryEvent : MonoBehaviour
 
    private void OnDisable()
     {
-        _playingAdvertisingHandler.ShortAdClosed -= SetHealth;
+        _playingAdvertisingHandler.DeathRewardedCallbackPlayed -= SetHealth;
     }
 
     public void SetPlayingAdvertisingHandler(PlayingAdvertisingHandler playingAdvertisingHandler)
     {
         _playingAdvertisingHandler = playingAdvertisingHandler;
-        _playingAdvertisingHandler.ShortAdClosed += SetHealth;
+        _playingAdvertisingHandler.DeathRewardedCallbackPlayed += SetHealth;
         gameObject.transform.SetParent(null);
     }
 
@@ -36,7 +36,7 @@ public class HealthRecoveryEvent : MonoBehaviour
     private IEnumerator MakePlayerImmortalCoroutine()
     {
         _playerCollider.enabled = false;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2.5f);
         _playerCollider.enabled = true;
     }
 }
