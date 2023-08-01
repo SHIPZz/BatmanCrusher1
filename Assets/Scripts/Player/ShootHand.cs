@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class ShootHand : MonoBehaviour
@@ -6,6 +7,7 @@ public class ShootHand : MonoBehaviour
     [SerializeField] private PlayerMovement _move;
 
     private Rigidbody _rigidbody;
+    private bool _isDisabled;
 
     private void Awake()
     {

@@ -26,13 +26,14 @@ public class HookRenderer : MonoBehaviour
         }
     }
 
-    public void DrawRope(Vector3 grapplePosition)
+    public void DrawRope(Vector3 grapplePosition, GameObject web)
     {
         _isDrawing = true;
         _lineRenderer.positionCount = 2;
 
         _targetGrapplePosition = grapplePosition;
         _currentGrapplePosition = _shootPoint.transform.position;
+        web.transform.position = _targetGrapplePosition;
     }
 
     public void Disable()

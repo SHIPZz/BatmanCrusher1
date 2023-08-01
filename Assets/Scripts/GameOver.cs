@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameOverPresenter : MonoBehaviour
@@ -9,6 +7,8 @@ public class GameOverPresenter : MonoBehaviour
     [SerializeField] private CanvasGroup _gameOverCanvas;
     [SerializeField] private CanvasGroup _victoryCanvas;
     [SerializeField] private CanvasGroupAlphaHandler _canvasGroupAlphaHandler;
+
+    public event Action CanvasTurned;
 
     private void Awake()
     {
@@ -30,5 +30,10 @@ public class GameOverPresenter : MonoBehaviour
         _canvasGroupAlphaHandler.DisableAll();
         _victoryCanvas.gameObject.SetActive(false);
         _gameOverCanvas.MoveCanvasAlpha(1, 1f);
+        
+        Invoke(nameof(InvokeEvent), 2.5f);
     }
+
+    private void InvokeEvent() =>
+        CanvasTurned?.Invoke();
 }

@@ -19,8 +19,7 @@ public class GameData
     [field: Preserve]
     public int ChosenCharacter = 0;
     [field: Preserve] 
-    public string CharactersKey = "CharactersId";
+    public string CharactersKey = "CharactersKey";
 
-    [field: Preserve] 
-    public List<int> CharactersId = new List<int>();
+    [field: Preserve] public List<int> CharactersId = new List<int>();
 }

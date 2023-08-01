@@ -3,14 +3,13 @@ using UnityEngine;
 
 public class GoldMoneyPaySystem
 {
-
     public event Action<bool> IsMoneyEnough;
 
     public bool TryBuyCharacter(int money)
     {
         if (!Wallet.Instance.TryRemoveMoney(money))
         {
-            Debug.Log("Недостаточно средств");
+            Debug.Log("РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚РІ");
             IsMoneyEnough?.Invoke(false);
             return false;
         }

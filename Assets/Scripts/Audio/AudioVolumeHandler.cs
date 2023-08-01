@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,6 @@ public class AudioVolumeHandler : MonoBehaviour
     [SerializeField] private List<AudioSource> _audios = new List<AudioSource>();
     [SerializeField] private Slider _slider;
     [SerializeField] private VictoryCanvasEvent _victoryCanvas;
-    [SerializeField] private SceneLoaderHandler _sceneLoaderHandler;
     [SerializeField] private DeathCanvasEventView _deathCanvas;
     [SerializeField] private CanvasGroupAlphaHandler _canvasAlphaState;
     [SerializeField] private Button _claimButton;
@@ -25,7 +25,6 @@ public class AudioVolumeHandler : MonoBehaviour
     private void OnEnable()
     {
         // _victoryCanvas.CanvasTurned += StopMusic;
-        _sceneLoaderHandler.SceneStartedLoading += StopMusic;
         _deathCanvas.CanvasTurned += StopMusic;
         _slider.onValueChanged.AddListener(OnValueChanged);
         _canvasAlphaState.PlayCanvasDisabled += RestartMusic;
@@ -40,12 +39,13 @@ public class AudioVolumeHandler : MonoBehaviour
     {
         // _victoryCanvas.CanvasTurned -= StopMusic;
         _claimButton.onClick.RemoveListener(StopMusic);
-        _playingAdvertisingHandler.DeathRewardedCallbackPlayed -= RestartMusic;
         _advertisingButton.onClick.RemoveListener(StopMusic);
         _deathCanvas.CanvasTurned -= StopMusic;
         _canvasAlphaState.PlayCanvasDisabled -= RestartMusic;
-        _sceneLoaderHandler.SceneStartedLoading -= StopMusic;
         _slider.onValueChanged.RemoveListener(OnValueChanged);
+        _playingAdvertisingHandler.RewardedClosed -= RestartMusic;
+        _playingAdvertisingHandler.RewardedDeathClosed -= RestartMusic;
+        _playingAdvertisingHandler.Opened -= StopMusic;
 
         foreach (var spawner in _spawners)
             spawner.AudiosReceived -= FillList;
@@ -54,28 +54,28 @@ public class AudioVolumeHandler : MonoBehaviour
     public void SetPlayingAdvertisingHandler(PlayingAdvertisingHandler playingAdvertisingHandler)
     {
         _playingAdvertisingHandler = playingAdvertisingHandler;
-        _playingAdvertisingHandler.DeathRewardedCallbackPlayed += RestartMusic;
+        _playingAdvertisingHandler.RewardedClosed += RestartMusic;
+        _playingAdvertisingHandler.RewardedDeathClosed += RestartMusic;
+        _playingAdvertisingHandler.Opened += StopMusic;
     }
 
     public void SetVolume(float value)
     {
-        if (value == 0)
-            value = 0.1f;
-
         _lastVolumeValue = value;
         _slider.value = value;
         Debug.Log($"Set - {_slider.value}");
-        ControlVolumeAudios(value);
     }
 
     private void StopMusic()
     {
         _lastVolumeValue = _slider.value;
         ControlVolumeAudios(0);
+        DataProvider.Instance.SaveVolume(_slider.value);
     }
 
     private void RestartMusic()
     {
+        Time.timeScale = 1f;
         _slider.value = _lastVolumeValue;
         ControlVolumeAudios(_lastVolumeValue);
         DataProvider.Instance.SaveVolume(_slider.value);
@@ -84,8 +84,8 @@ public class AudioVolumeHandler : MonoBehaviour
     private void OnValueChanged(float value)
     {
         _slider.value = value;
-        ControlVolumeAudios(value);
-        DataProvider.Instance.SaveVolume(value);
+        ControlVolumeAudios(_slider.value);
+        DataProvider.Instance.SaveVolume(_slider.value);
     }
 
     private void FillList(List<AudioSource> audioSources)
@@ -95,6 +95,13 @@ public class AudioVolumeHandler : MonoBehaviour
             _audios.Add(audioSources[i]);
         }
     }
+    
+    private void SetAudioVolume(AudioSource audio, float volume, float duration)
+    {
+        audio.DOKill(); 
+
+        audio.DOFade(volume, duration).SetUpdate(false);
+    }
 
     private void ControlVolumeAudios(float value)
     {
@@ -103,7 +110,7 @@ public class AudioVolumeHandler : MonoBehaviour
             if (audio == null)
                 continue;
 
-            audio.volume = value;
+            SetAudioVolume(audio, value, 0f);
         }
     }
 }

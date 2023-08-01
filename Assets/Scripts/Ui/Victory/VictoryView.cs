@@ -23,8 +23,9 @@ public class VictoryView : MonoBehaviour
     {
         _rewardItemView.Hide();
         RemoveListeners();
-        _canvasGroup.MoveCanvasAlpha(0, 1f);
-        this.SetActive(gameObject, false, 1f);
+        _canvasGroup.gameObject.SetActive(false);
+        // _canvasGroup.MoveCanvasAlpha(0, 1f);
+        gameObject.SetActive(false);
     }
 
     private void AddListeners()

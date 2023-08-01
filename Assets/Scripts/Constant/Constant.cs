@@ -3,14 +3,14 @@ public class Constant
     public const int BatmanId = 0;
     public const int WolverineId = 1;
     public const int SpiderManId = 2;
-    public const int SpiderPrice = 2800;
-    public const int WolverinePrice = 2200;
+    public const int SpiderPrice = 4500;
+    public const int WolverinePrice = 4000;
     public const int BatmanPrice = 0;
     public const int Reward = 100;
     public const int MultiplierReward = 2;
     public const string BatmanPrefab = "Prefabs/BatmanSpring";
     public const string WolverinePrefab = "Prefabs/Wolverine";
-    public const string SpiderManPrefab = "Prefabs/SpiderMan";
+    public const string SpiderManPrefab = "Prefabs/Spiderman";
     public const string ShadowPrefab = "Prefabs/Shadow";
     public const string DarkSpiderPrefab = "Prefabs/DarkSpider";
     public const string BatLordPrefab = "Prefabs/BatLord";

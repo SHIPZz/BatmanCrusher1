@@ -11,7 +11,7 @@ public class GrapplingHook : MonoBehaviour
 
     public event Action<Vector3> Grappled;
 
-    private readonly float _lastCreatedTime = 0.4f;
+    private readonly float _lastCreatedTime = 0.2f;
 
     private HookRenderer _hookRenderer;
     private Camera _camera;
@@ -39,10 +39,10 @@ public class GrapplingHook : MonoBehaviour
 
         if (IsTargetVectorZero(newHit.point) == false)
         {
-            _hookRenderer.DrawRope(newHit.point);
             _elapsedTime = Time.time;
             _web.SetActive(true);
-            _web.transform.position = newHit.point;
+            _hookRenderer.DrawRope(newHit.point,_web);
+            // _web.transform.position = newHit.point;
 
             Grappled?.Invoke(newHit.point);
         }

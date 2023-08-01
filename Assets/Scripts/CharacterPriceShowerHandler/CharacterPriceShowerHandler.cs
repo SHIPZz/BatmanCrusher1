@@ -13,6 +13,7 @@ public class CharacterPriceShowerHandler : MonoBehaviour
     private TextMeshProUGUI _moneySpiderText;
     private TextMeshProUGUI _moneyWolverineText;
     private IReadOnlyList<GameObject> _characters;
+    private CharacterId _lastPlayerId;
 
     private void Start()
     {
@@ -25,6 +26,7 @@ public class CharacterPriceShowerHandler : MonoBehaviour
 
         _characterPrices.Add(_wolverinePricePrefab);
         _characterPrices.Add(_spiderPricePrefab);
+
         _selectedCharacter.CharacterChanged += OnChosenCharacter;
     }
 
@@ -35,16 +37,19 @@ public class CharacterPriceShowerHandler : MonoBehaviour
 
     private void OnChosenCharacter(int chosenPlayerId)
     {
-        var characterId = _characters[chosenPlayerId].GetComponent<CharacterId>();
+        if (_lastPlayerId is not null)
+            SetActivePrice(_lastPlayerId.PricePrefab, false);
         
-        for (int i = 0; i < _characters.Count; i++)
+        var characterId = _characters[chosenPlayerId].GetComponent<CharacterId>();
+
+        if (DataProvider.Instance.IsPlayerPurchased(characterId.Index))
         {
-            if (chosenPlayerId == characterId.Index)
-            {
-                SetActivePrice(_characters[i].GetComponent<CharacterId>().PricePrefab, false);
-                SetActivePrice(characterId.PricePrefab, !DataProvider.Instance.IsPlayerPurchased(characterId.Index));
-            }
+            SetActivePrice(characterId.PricePrefab, false);
+            return;
         }
+
+        _lastPlayerId = characterId;
+        SetActivePrice(characterId.PricePrefab, true);
     }
 
     private void SetActivePrice(GameObject price, bool isActive) =>

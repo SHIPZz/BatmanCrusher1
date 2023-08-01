@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class Trap : MonoBehaviour
 {
     private const int IgnoreRaycastLayer = 2;
@@ -12,6 +13,7 @@ public class Trap : MonoBehaviour
     private void Awake()
     {
         gameObject.layer = IgnoreRaycastLayer;
+        GetComponent<Collider>().isTrigger = true;
     }
 
     private void OnTriggerEnter(Collider other)

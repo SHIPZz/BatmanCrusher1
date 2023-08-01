@@ -15,11 +15,7 @@ public class NextLevelView : MonoBehaviour
     public event Action RestartButtonClicked;
 
     public int? Level { get; set; }
-
-    private void Start()
-    {
-        StartCoroutine(nameof(DelayedStart));
-    }
+    
 
     private void OnEnable()
     {
@@ -32,16 +28,7 @@ public class NextLevelView : MonoBehaviour
         _claimButton.onClick.RemoveListener(OnAcceptButtonClicked);
         _restartButton.onClick.RemoveListener(OnRestartButtonClicked);
     }
-
-    private System.Collections.IEnumerator DelayedStart()
-    {
-        while (Level == null)
-        {
-            yield return null;
-        }
-
-        SetTextLanguage();
-    }
+    
 
     private void OnRestartButtonClicked()
     {

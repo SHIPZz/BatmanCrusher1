@@ -17,17 +17,13 @@ public class Wallet
 
     private int _money;
 
-    // public Wallet()
-    // {
-    //     _money = 0;
-    // }
-
     public void AddMoney(int reward)
     {
         if (_money + reward > MaxMoney)
             return;
 
         _money += reward;
+
 
         MoneyAdded?.Invoke(_money);
     }
@@ -41,6 +37,7 @@ public class Wallet
         }
 
         _money = Math.Clamp(_money - amount, 0, MaxMoney);
+        DataProvider.Instance.SaveMoney();
         MoneyEnough?.Invoke(true);
         return true;
     }
@@ -48,7 +45,7 @@ public class Wallet
     public int GetMoney() =>
         _money;
 
-    public int LoadMoney(int money) =>
+    public void LoadMoney(int money) =>
         _money = money;
 
     private bool IsMoneyEnough(int fine) =>

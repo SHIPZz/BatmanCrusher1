@@ -12,11 +12,11 @@ public class EnemyCountLeaderboard : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] _scores;
     [SerializeField] private TextMeshProUGUI[] _ranks;
     [SerializeField] private Button _openLeaderboard;
-    
+
     public event Action DataLoaded;
 
     public event Action DataNotLoaded;
-    
+
 
     private void OnEnable()
     {
@@ -30,11 +30,14 @@ public class EnemyCountLeaderboard : MonoBehaviour
 
     public void LoadLeaderboard()
     {
-        Leaderboard.GetEntries(Name, (result) =>
+        if (PlayerAccount.IsAuthorized)
         {
-            Debug.Log($"My rank = {result.userRank}");
-            FillArray(result);
-        });
+            Leaderboard.GetEntries(Name, (result) =>
+            {
+                Debug.Log($"My rank = {result.userRank}");
+                FillArray(result);
+            });
+        }
     }
 
     private void OnEnableLeaderboard()

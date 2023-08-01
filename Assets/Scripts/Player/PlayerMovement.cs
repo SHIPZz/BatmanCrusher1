@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -9,12 +11,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private Rigidbody _rigidBody;
 
-    private bool _isGrapping = false;
-    private Vector3 _grappingVelocity;
+    private bool _isGrappling = false;
+    private Vector3 _grapplingVelocity;
     private Coroutine _moveCoroutine;
 
-    public bool IsGrappling => _isGrapping;
-    public Vector3 GrapplingVelocity => _grappingVelocity;
+    public bool IsGrappling => _isGrappling;
+    
+    public Vector3 GrapplingVelocity => _grapplingVelocity;
 
     private void OnEnable()
     {
@@ -24,6 +27,12 @@ public class PlayerMovement : MonoBehaviour
     private void OnDisable()
     {
         _hook.Grappled -= OnGrappled;
+    }
+
+    public void SetVelocity(Vector3 velocity)
+    {
+        _rigidBody.velocity = velocity;
+        _isGrappling = false;
     }
 
     private void OnGrappled(Vector3 point)
@@ -38,14 +47,15 @@ public class PlayerMovement : MonoBehaviour
     {
         while (Vector3.Distance(_rigidBody.position, point) > ActiveDistance)
         {
-            var force = (point - _rigidBody.position) * _speed;
-            _isGrapping = true;
-            _grappingVelocity = force;
+            var force = (point - _rigidBody.position).normalized * _speed;
+            _isGrappling = true;
+            
+            _grapplingVelocity = force;
 
             yield return new WaitForFixedUpdate();
         }
 
-        _isGrapping = false;
-        _grappingVelocity = Vector3.zero;
+        _isGrappling = false;
+        _grapplingVelocity = Vector3.zero;
     }
 }

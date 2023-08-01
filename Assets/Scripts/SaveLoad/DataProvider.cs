@@ -11,6 +11,7 @@ public class DataProvider
     private static DataProvider _instance;
 
     private GameData _gameData;
+    private List<int> _characters;
 
     public static DataProvider Instance => _instance ??= new DataProvider();
 
@@ -19,10 +20,17 @@ public class DataProvider
 
     private DataProvider()
     {
-        if (PlayerAccount.IsAuthorized)
-            _saveLoadSystem = new YandexSaveSystem();
-        else
+        // if (PlayerAccount.IsAuthorized)
+        //     _saveLoadSystem = new YandexSaveSystem();
+        // else
             _saveLoadSystem = new PlayerPrefsSystem();
+    }
+
+    public void SaveEnemyCount(int enemyCount)
+    {
+        _gameData.EnemyCount = enemyCount;
+        // Leaderboard.SetScore(nameof(EnemyCountLeaderboard), _gameData.EnemyCount);
+        _saveLoadSystem.Save(_gameData);
     }
 
     public void SaveMoney()
@@ -57,13 +65,6 @@ public class DataProvider
         _saveLoadSystem.Save(_gameData);
     }
 
-    public void SaveEnemyCount(int enemyCount)
-    {
-        _gameData.EnemyCount = enemyCount;
-        Leaderboard.SetScore(nameof(EnemyCountLeaderboard), _gameData.EnemyCount);
-        _saveLoadSystem.Save(_gameData);
-    }
-
     public int GetCharacter() =>
         _gameData.ChosenCharacter;
 
@@ -85,12 +86,15 @@ public class DataProvider
     public void ClearData()
     {
         _gameData = new GameData();
-        _saveLoadSystem.Save(_gameData);
         PlayerPrefs.DeleteAll();
+        _saveLoadSystem.Save(_gameData);
     }
 
-    public bool IsPlayerPurchased(int playerId) =>
-        _gameData.CharactersId.Contains(playerId);
+    public bool IsPlayerPurchased(int playerId)
+    {
+        Debug.Log(_gameData.CharactersId.Count);
+        return _gameData.CharactersId.Contains(playerId);
+    }
 
     public void PurchaseCharacter(int characterId)
     {
@@ -98,11 +102,14 @@ public class DataProvider
         {
             _gameData.CharactersId.Add(characterId);
 
+            Debug.Log(_gameData.CharactersId.Count);
+
             _gameData.CharactersKey = JsonUtility.ToJson(_gameData.CharactersId);
 
             _saveLoadSystem.Save(_gameData);
         }
     }
+
 
     public async void LoadInitialData()
     {
@@ -110,8 +117,14 @@ public class DataProvider
 
         Debug.Log(_gameData + "- gameData");
 
-        _gameData.CharactersId.Add(Constant.BatmanId);
-        _gameData.CharactersKey = JsonUtility.ToJson(_gameData.CharactersId);
-        _gameData.CharactersId = JsonUtility.FromJson<List<int>>(_gameData.CharactersKey);
+        try
+        {
+            JsonUtility.FromJsonOverwrite(_gameData.CharactersKey, _gameData.CharactersId);
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Json error");
+            throw;
+        }
     }
 }

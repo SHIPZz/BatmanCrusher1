@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace InsaneSystems.HealthbarsKit.UI
@@ -23,7 +24,7 @@ namespace InsaneSystems.HealthbarsKit.UI
             rectTransform = GetComponent<RectTransform>();
             rectTransform.anchorMin = new Vector2(0, 0);
             rectTransform.anchorMax = new Vector2(0, 0);
-            //_maxHealthValue = _health.InitialValue;
+            // _maxHealthValue = _health.MaxValue;
         }
 
         private void OnEnable()
@@ -35,8 +36,8 @@ namespace InsaneSystems.HealthbarsKit.UI
         {
             _health.ValueChanged -= OnHealthChanged;
         }
-        
-        private void _health_Recovered(float health)
+
+        public void SetHealthValue(float health)
         {
             fillImage.fillAmount = health / _maxHealthValue;
             //this.enabled = true;

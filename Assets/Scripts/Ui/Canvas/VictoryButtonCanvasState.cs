@@ -6,7 +6,6 @@ public class VictoryButtonCanvasState : MonoBehaviour
     [SerializeField] private PlayingAdvertisingHandler _playingAdvert;
     [SerializeField] private Button _advertisingButton;
     [SerializeField] private Button _claimButton;
-    [SerializeField] private SceneLoaderHandler _sceneLoaderHandler;
     [SerializeField] private CanvasGroupAlphaHandler _canvsaGroupAlphaState;
 
     private void OnEnable()

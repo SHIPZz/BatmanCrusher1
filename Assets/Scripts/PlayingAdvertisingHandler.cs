@@ -1,5 +1,6 @@
 using Agava.YandexGames;
 using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +13,10 @@ public class PlayingAdvertisingHandler : MonoBehaviour
         _advertisingVictoryButton;
 
     public event Action RewardedCallbackPlayed;
+    public event Action Opened;
     public event Action DeathRewardedCallbackPlayed;
+    public event Action RewardedClosed;
+    public event Action RewardedDeathClosed;
 
     private void OnEnable()
     {
@@ -28,25 +32,47 @@ public class PlayingAdvertisingHandler : MonoBehaviour
 
     private void SeeLongAd()
     {
-        // RewardedCallbackPlayed?.Invoke();
-        VideoAd.Show(OnOpenCallback, OnRewardedCallback, OnCloseCallback, OnErrorCallback);
+        VideoAd.Show(OnOpenedCallback, OnRewardedCallback, OnRewardClosedCallback, OnErrorCallback);
     }
 
-    private void SeeLongAdAfterDeathAd() =>
-        VideoAd.Show(null, OnRewardedDealthCallback, OnCloseCallback);
+    private void SeeLongAdAfterDeathAd()
+    {
+        // Time.timeScale = 1f;
+        // Opened?.Invoke();
+        //
+        // DOTween.Sequence().AppendInterval(0.5f).OnComplete(() =>
+        // {
+        //     Time.timeScale = 1f;
+        //     print("asdasdad");
+        //     RewardedDeathClosed?.Invoke();
+        // });
+        VideoAd.Show(OnOpenedCallback, OnRewardedDealthCallback, OnRewardedDeathClosedCallback);
+    }
 
     private void SeeShortAd()
     {
         InterstitialAd.Show(OnOpenCallback, OnCloseCallback, OnErrorCallback);
     }
 
-    private void OnErrorCallback(string obj)
+    private void OnErrorCallback(string obj) { }
+
+    private void OnOpenedCallback()
     {
+        Opened?.Invoke();
+        Time.timeScale = 0f;
     }
 
-    private void OnCloseCallback()
+    private void OnRewardClosedCallback()
     {
         Time.timeScale = 1f;
+        RewardedClosed?.Invoke();
+        // LongAdClosed?.Invoke();
+    }  
+    
+    private void OnRewardedDeathClosedCallback()
+    {
+        Time.timeScale = 1f;
+        RewardedDeathClosed?.Invoke();
         // LongAdClosed?.Invoke();
     }
 
