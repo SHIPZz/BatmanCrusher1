@@ -80,10 +80,7 @@ public class LevelLoadMedaitor : MonoBehaviour
             levelInit.UploadData();
         }
 
-
         DOTween.Sequence().AppendInterval(3f).OnComplete(() => _loader.Load(1));
-
-        // _loader.Load(1);
     }
 
     private void OnInBackgroundChange(bool inBackground)
@@ -95,7 +92,6 @@ public class LevelLoadMedaitor : MonoBehaviour
     private void RestartLevel()
     {
         SceneManager.LoadScene(1);
-        // _loader.Load(_currentLevel);
     }
 
     private void LoadNextLevel()

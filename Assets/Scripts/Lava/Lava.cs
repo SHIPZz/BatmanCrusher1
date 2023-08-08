@@ -9,7 +9,9 @@ public class Lava : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<IDamageable>().TakeDamage(KillDamage);
+        
+        if(other.TryGetComponent(out IDamageable damageable))
+            damageable.TakeDamage(KillDamage);
 
         Touched?.Invoke();
     }

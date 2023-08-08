@@ -285,6 +285,15 @@ MonoBehaviour:
       - Oyun bitti
       Flags: 000000
       Languages_Touch: []
+    - Term: "\u0412\u044B \u0443\u043C\u0435\u0440\u043B\u0438"
+      TermType: 0
+      Description: 
+      Languages:
+      - You died
+      - "\u0412\u044B \u0443\u043C\u0435\u0440\u043B\u0438"
+      - "Siz \xF6ld\xFCn\xFCz"
+      Flags: 000000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: 

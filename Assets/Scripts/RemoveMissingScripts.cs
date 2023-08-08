@@ -10,7 +10,6 @@ public class RemoveMissingScripts : MonoBehaviour
 
     private void CleanUpMissingScriptsRecursive(Transform parent)
     {
-        // Перебираем все дочерние объекты
         for (int i = parent.childCount - 1; i >= 0; i--)
         {
             Transform child = parent.GetChild(i);

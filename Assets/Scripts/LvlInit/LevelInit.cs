@@ -145,10 +145,7 @@ namespace LvlInit
 
             _healthRecoveryEvent = player.GetComponentInChildren<HealthRecoveryEvent>();
             _healthRecoveryEvent.SetPlayingAdvertisingHandler(_playingAdvertisingHandler);
-
-            //_healthBarState.enabled = true;
-
-            //SetCamera();
+            
             SetPlayer(player);
         }
 

@@ -5410,6 +5410,7 @@ MonoBehaviour:
   _hook: {fileID: 3046081931229082373}
   _speed: 7
   _rigidBody: {fileID: 8880856582785977830}
+  _speedStep: 0.01
 --- !u!95 &8544930409540427691
 Animator:
   serializedVersion: 7
@@ -5451,10 +5452,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.9102174
-  m_Height: 4.49711
+  m_Radius: 1.0645062
+  m_Height: 4.690325
   m_Direction: 1
-  m_Center: {x: 0.009957314, y: -0.5306041, z: -0.043469943}
+  m_Center: {x: 0.104004025, y: -0.43399692, z: 0.016772129}
 --- !u!1 &763411222184883633
 GameObject:
   m_ObjectHideFlags: 0

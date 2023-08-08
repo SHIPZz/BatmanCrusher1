@@ -17,6 +17,11 @@ public class Wallet
 
     private int _money;
 
+    public Wallet()
+    {
+        _money = 10000;
+    }
+
     public void AddMoney(int reward)
     {
         if (_money + reward > MaxMoney)

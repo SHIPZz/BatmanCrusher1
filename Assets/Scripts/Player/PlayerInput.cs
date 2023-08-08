@@ -1,13 +1,11 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(PhysicalObject))]
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private GrapplingHook _hook;
-
-
-    public bool IsClicked { get; private set; }
 
     private readonly int _leftMouseClick = 0;
 
@@ -22,6 +20,9 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         if (Input.GetMouseButtonDown(_leftMouseClick))
         {
             _hook.CreateHook();

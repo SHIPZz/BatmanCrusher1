@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _grapplingVelocity;
     private Coroutine _moveCoroutine;
     private bool _isMoved;
+    private float _initalSpeed;
 
 
     public bool IsGrappling => _isGrappling;
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable()
     {
         _hook.Grappled += OnGrappled;
+        _initalSpeed = _speed;
     }
 
     private void OnDisable()
@@ -41,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         if (_moveCoroutine != null)
         {
             _isMoved = false;
-            _speed = 4;
+            _speed = _initalSpeed;
             StopCoroutine(_moveCoroutine);
         }
 

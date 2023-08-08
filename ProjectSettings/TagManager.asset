@@ -24,7 +24,7 @@ TagManager:
   - Enemy
   - Chest
   - Hard cube
-  - 
+  - WorldSpaceUi
   - 
   - 
   - 
@@ -41,6 +41,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: A
+    uniqueID: 2896391587
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Top
+    uniqueID: 1797291469
     locked: 0

@@ -37,15 +37,6 @@ public class PlayingAdvertisingHandler : MonoBehaviour
 
     private void SeeLongAdAfterDeathAd()
     {
-        // Time.timeScale = 1f;
-        // Opened?.Invoke();
-        //
-        // DOTween.Sequence().AppendInterval(0.5f).OnComplete(() =>
-        // {
-        //     Time.timeScale = 1f;
-        //     print("asdasdad");
-        //     RewardedDeathClosed?.Invoke();
-        // });
         VideoAd.Show(OnOpenedCallback, OnRewardedDealthCallback, OnRewardedDeathClosedCallback);
     }
 

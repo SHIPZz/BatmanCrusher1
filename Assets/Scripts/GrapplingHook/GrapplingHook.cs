@@ -36,7 +36,7 @@ public class GrapplingHook : MonoBehaviour
 
         if (IsColliderNull(newHit.collider) == false && IsWrongLayerMask(newHit.collider, HardCubeLayerMask) == true)
             return;
-
+        
         if (IsTargetVectorZero(newHit.point) == false)
         {
             _elapsedTime = Time.time;

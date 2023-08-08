@@ -12,14 +12,12 @@ public class PlayingCanvas : MonoBehaviour
     private void Awake()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
-        // GetComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ConstantPixelSize;
         _canvasGroup.alpha = 1;
     }
 
     private void Start()
     {
         _moneyPaySystem = DependencyContainer.Get<GoldMoneyPaySystem>();
-        // _canvasGroup.DOFade(1, 0.5f).SetLoops(-1, LoopType.Yoyo);
         Wallet.Instance.MoneyEnough += _moneyPaySystem_IsMoneyEnough;
     }
     
@@ -33,7 +31,7 @@ public class PlayingCanvas : MonoBehaviour
         if (!isEnough)
             return;
 
-        _canvasGroup.DOKill();
+        // _canvasGroup.DOKill();
         _canvasGroup.MoveCanvasAlpha(0, 0.5f);
     }
 }
