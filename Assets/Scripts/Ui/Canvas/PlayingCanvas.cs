@@ -31,7 +31,6 @@ public class PlayingCanvas : MonoBehaviour
         if (!isEnough)
             return;
 
-        // _canvasGroup.DOKill();
         _canvasGroup.MoveCanvasAlpha(0, 0.5f);
     }
 }

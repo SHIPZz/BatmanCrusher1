@@ -12,6 +12,7 @@ public class PlayerSelectedCharacter : MonoBehaviour
     
     private int _currentIndex;
     private GoldMoneyPaySystem _paySystem;
+    private bool _isBought;
 
     public IReadOnlyList<GameObject> Characters =>
         _characters;
@@ -90,10 +91,12 @@ public class PlayerSelectedCharacter : MonoBehaviour
 
     private void SaveChosenCharacter()
     {
-        if (TryBuyChosenCharacter(_currentIndex))
+        if (TryBuyChosenCharacter(_currentIndex) && !_isBought)
         {
             DisableAllCharacters();
             DataProvider.Instance.SaveCharacter(_currentIndex);
+            _acceptButton.enabled = false;
+            _isBought = true;
         }
     }
 

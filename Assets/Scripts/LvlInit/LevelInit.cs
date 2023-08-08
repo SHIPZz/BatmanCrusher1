@@ -39,10 +39,16 @@ namespace LvlInit
             { "en", "English" },
             { "tr", "Turkish" }
         };
+        
+        private Dictionary<string, int> _imageIds = new()
+        {
+            {"English", 1 },
+            {"Russian", 2 },
+            {"Turkish", 3 },
+        };
 
         private void Awake()
         {
-            // InterstitialAd.Show();
             _canvasAlphaState.SetPlayingAdvertisingHandler(_playingAdvertisingHandler);
             _audioVolumeHandler.SetPlayingAdvertisingHandler(_playingAdvertisingHandler);
             _initialCameraPositionY = _camera.transform.position.y;
@@ -96,16 +102,16 @@ namespace LvlInit
         {
             yield return new WaitForSeconds(0.8f);
             _playerSpawner.SetCharacterId(DataProvider.Instance.GetCharacter());
-            _imageHandler.SetImage(DataProvider.Instance.GetImage());
             _playerSelectedCharacter.SetInitialCharacter(DataProvider.Instance.GetCharacter());
             _enemyDestroyingHandler.SetCount(DataProvider.Instance.GetEnemyCount());
-            // _enemyCountLeaderboard.LoadLeaderboard();
             ConfigureCamera(_initialCameraPositionY, 1.5f);
+            _enemyCountLeaderboard.LoadLeaderboard();
             yield return new WaitForSeconds(1.5f);
             _audioVolumeHandler.SetVolume(DataProvider.Instance.GetVolume());
-            // LocalizationManager.CurrentLanguage = _languages[YandexGamesSdk.Environment.i18n.lang];
+            LocalizationManager.CurrentLanguage = _languages[YandexGamesSdk.Environment.i18n.lang];
             Wallet.Instance.LoadMoney(DataProvider.Instance.GetMoney());
             _walletUIView.SetMoneyCount(DataProvider.Instance.GetMoney());
+            _imageHandler.SetImage(_imageIds[LocalizationManager.CurrentLanguage]);
             SetDistanceCanvasActive(true);
             ConfigurePlayCanvas(true);
         }
@@ -123,16 +129,11 @@ namespace LvlInit
             }
         }
 
-        private void ConfigureCamera(float targetValue, float duration)
-        {
+        private void ConfigureCamera(float targetValue, float duration) => 
             _camera.transform.DOMoveY(targetValue, duration).SetAutoKill(true);
-        }
 
-        private void ConfigurePlayCanvas(bool isActive)
-        {
+        private void ConfigurePlayCanvas(bool isActive) => 
             _playingCanvas.gameObject.SetActive(isActive);
-            // _playingCanvas.enabled = isActive;
-        }
 
         private void Configure(Player player)
         {

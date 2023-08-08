@@ -102,7 +102,7 @@ public class CanvasGroupAlphaHandler : MonoBehaviour
     {
         _deathCanvas.MoveCanvasAlpha(0, 1);
         _deathCanvas.gameObject.SetActive(false);
-        // this.SetActive(_deathCanvas.gameObject, false, 1f);
+        _notEnoughMoneyCanvas.gameObject.SetActive(false);
 
         _buttonCanvas.gameObject.SetActive(true);
         _buttonCanvas.MoveCanvasAlpha(1, 1);
@@ -235,15 +235,6 @@ public class CanvasGroupAlphaHandler : MonoBehaviour
         _deathCanvas.MoveCanvasAlpha(1, 1f);
     }
 
-    private void OnVictoryCanvasTurned()
-    {
-        DisableAll();
-
-        _victoryCanvas.gameObject.SetActive(true);
-
-        _victoryCanvas.MoveCanvasAlpha(1, 1f);
-    }
-
     private void OnStopButtonClicked()
     {
         this.SetActive(_countCanvas.gameObject, false, 0.5f);
@@ -265,6 +256,7 @@ public class CanvasGroupAlphaHandler : MonoBehaviour
         this.SetActive(_playCanvas.gameObject, false, 0.5f);
         this.SetActive(_countCanvas.gameObject, true, 0f);
         this.SetActive(_buttonCanvas.gameObject, true, 0f);
+        _notEnoughMoneyCanvas.gameObject.SetActive(false);
 
         _buttonCanvas.MoveCanvasAlpha(1, 0.5f);
         _countCanvas.MoveCanvasAlpha(1, 0.5f);
