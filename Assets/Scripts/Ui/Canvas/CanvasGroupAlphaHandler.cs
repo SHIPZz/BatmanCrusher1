@@ -21,9 +21,7 @@ public class CanvasGroupAlphaHandler : MonoBehaviour
     [SerializeField] private DeathCanvasEventView _deathCanvasEventView;
     [SerializeField] private VictoryCanvasEvent _victoryCanvasEventView;
     [SerializeField] private Button _stopButton;
-    [SerializeField] private Button _closeMenuCanvas;
     [SerializeField] private Button _closingSettingButton;
-    [SerializeField] private Button _closingMenu;
     [SerializeField] private Button _closingNotEnoughMoney;
     [SerializeField] private Button _settingButton;
     [SerializeField] private Button _playButton;
@@ -51,10 +49,8 @@ public class CanvasGroupAlphaHandler : MonoBehaviour
         _deathCanvasEventView.CanvasTurned += OnDeathCanvasEventViewTurned;
         // _victoryCanvasEventView.CanvasTurned += OnVictoryCanvasTurned;
         _stopButton.onClick.AddListener(OnStopButtonClicked);
-        _closeMenuCanvas.onClick.AddListener(OnClosingMenuCanvasClicked);
         _settingButton.onClick.AddListener(OnSettingButtonClicked);
         _closingSettingButton.onClick.AddListener(OnClosingSettingButtonClicked);
-        _closingMenu.onClick.AddListener(OnClosingMenu);
         _resumptionButton.onClick.AddListener(OnClosingMenu);
         _openLeaderboard.onClick.AddListener(OpenLeadboard);
         _closingNotEnoughMoney.onClick.AddListener(CloseNotEnoughMoneyCanvas);
@@ -72,9 +68,7 @@ public class CanvasGroupAlphaHandler : MonoBehaviour
         _stopButton.onClick.RemoveListener(OnStopButtonClicked);
         _closingSettingButton.onClick.RemoveListener(OnClosingSettingButtonClicked);
         _enemyLeaderboard.DataLoaded -= OpenLeadboard;
-        _closeMenuCanvas.onClick.RemoveListener(OnClosingMenuCanvasClicked);
         _settingButton.onClick.RemoveListener(OnSettingButtonClicked);
-        _closingMenu.onClick.RemoveListener(OnClosingMenu);
         _resumptionButton.onClick.RemoveListener(OnClosingMenu);
         _openLeaderboard.onClick.RemoveListener(OpenLeadboard);
         _closingNotEnoughMoney.onClick.RemoveListener(CloseNotEnoughMoneyCanvas);

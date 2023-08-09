@@ -9,7 +9,6 @@ public class PauseEvent : MonoBehaviour, IPauseService
     [SerializeField] private DeathCanvasEventView _deathCanvasEventView;
     [SerializeField] private VictoryCanvasEvent _victoryCanvasEvent;
     [SerializeField] private Button _closingSettingButton;
-    [SerializeField] private Button _closingMenu;
     [SerializeField] private SliderLoadingEvent _sliderLoadingEvent;
     [SerializeField] private RestartingGameEvent _restartingGameEvent;
     [SerializeField] private Button _resumptionButton;
@@ -22,7 +21,6 @@ public class PauseEvent : MonoBehaviour, IPauseService
         _deathCanvasEventView.CanvasTurned += SetPause;
         _closingSettingButton.onClick.AddListener(UnPause);
         _resumptionButton.onClick.AddListener(UnPause);
-        _closingMenu.onClick.AddListener(UnPause);
         _sliderLoadingEvent.ValueEnded += UnPause;
         _restartingGameEvent.Reloaded += UnPause;
         _advertisingButton.onClick.AddListener(UnPause);
@@ -38,7 +36,6 @@ public class PauseEvent : MonoBehaviour, IPauseService
         _sliderLoadingEvent.ValueEnded -= UnPause;
         _restartingGameEvent.Reloaded -= UnPause;
         _closingSettingButton.onClick.RemoveListener(UnPause);
-        _closingMenu.onClick.RemoveListener(UnPause);
         _advertisingButton.onClick.RemoveListener(UnPause);
     }
 

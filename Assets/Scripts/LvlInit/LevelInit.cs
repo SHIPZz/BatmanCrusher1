@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Agava.WebUtility;
 using Agava.YandexGames;
 using DG.Tweening;
 using I2.Loc;
@@ -39,13 +40,6 @@ namespace LvlInit
             { "en", "English" },
             { "tr", "Turkish" }
         };
-        
-        private Dictionary<string, int> _imageIds = new()
-        {
-            {"English", 1 },
-            {"Russian", 2 },
-            {"Turkish", 3 },
-        };
 
         private void Awake()
         {
@@ -60,10 +54,12 @@ namespace LvlInit
             _cameraFollower.enabled = false;
             _deathCanvasEventView.enabled = false;
             _disablineGameObject.enabled = false;
+            AudioListener.pause = false;
             var offScreenIndicator = _distanceCanvas.GetComponentInChildren<OffScreenIndicator>();
             offScreenIndicator.SetCamera(_camera);
             SetDistanceCanvasActive(false);
             ConfigurePlayCanvas(false);
+            YandexGamesSdk.CallbackLogging = false;
 
             SetPlayerForObjectSpawners();
         }
@@ -76,11 +72,33 @@ namespace LvlInit
         private void OnEnable()
         {
             _playerSpawner.Spawned += Configure;
+            WebApplication.InBackgroundChangeEvent += OnInBackgroundChange;
+            Application.focusChanged += OnFocusChanged;
         }
 
         private void OnDisable()
         {
             _playerSpawner.Spawned -= Configure;
+            Application.focusChanged -= OnFocusChanged;
+            WebApplication.InBackgroundChangeEvent -= OnInBackgroundChange;
+        }
+
+        private void OnFocusChanged(bool isChanged)
+        {
+            if (!isChanged)
+            {
+                OnInBackgroundChange(true);
+                return;
+            }
+
+            OnInBackgroundChange(false);
+        }
+
+        private void OnInBackgroundChange(bool inBackground)
+        {
+            AudioListener.pause = inBackground;
+
+            Time.timeScale = inBackground ? 0f : 1f;
         }
 
         public void UploadData()
@@ -105,13 +123,13 @@ namespace LvlInit
             _playerSelectedCharacter.SetInitialCharacter(DataProvider.Instance.GetCharacter());
             _enemyDestroyingHandler.SetCount(DataProvider.Instance.GetEnemyCount());
             ConfigureCamera(_initialCameraPositionY, 1.5f);
-            _enemyCountLeaderboard.LoadLeaderboard();
             yield return new WaitForSeconds(1.5f);
             _audioVolumeHandler.SetVolume(DataProvider.Instance.GetVolume());
+            _enemyCountLeaderboard.LoadLeaderboard();
             LocalizationManager.CurrentLanguage = _languages[YandexGamesSdk.Environment.i18n.lang];
             Wallet.Instance.LoadMoney(DataProvider.Instance.GetMoney());
             _walletUIView.SetMoneyCount(DataProvider.Instance.GetMoney());
-            _imageHandler.SetImage(_imageIds[LocalizationManager.CurrentLanguage]);
+            _imageHandler.SetImage(YandexGamesSdk.Environment.i18n.lang);
             SetDistanceCanvasActive(true);
             ConfigurePlayCanvas(true);
         }
@@ -123,16 +141,16 @@ namespace LvlInit
 
         private void SetPlayerForObjectSpawners()
         {
-            foreach (var objectSpawner in _objectSpawners)
+            foreach (EnemyObjectSpawner objectSpawner in _objectSpawners)
             {
                 objectSpawner.SetPlayerSpawner(_playerSpawner);
             }
         }
 
-        private void ConfigureCamera(float targetValue, float duration) => 
+        private void ConfigureCamera(float targetValue, float duration) =>
             _camera.transform.DOMoveY(targetValue, duration).SetAutoKill(true);
 
-        private void ConfigurePlayCanvas(bool isActive) => 
+        private void ConfigurePlayCanvas(bool isActive) =>
             _playingCanvas.gameObject.SetActive(isActive);
 
         private void Configure(Player player)
@@ -146,7 +164,7 @@ namespace LvlInit
 
             _healthRecoveryEvent = player.GetComponentInChildren<HealthRecoveryEvent>();
             _healthRecoveryEvent.SetPlayingAdvertisingHandler(_playingAdvertisingHandler);
-            
+
             SetPlayer(player);
         }
 

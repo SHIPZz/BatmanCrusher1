@@ -5188,7 +5188,7 @@ GameObject:
   - component: {fileID: 2415946481937584017}
   - component: {fileID: 2096956662160439935}
   - component: {fileID: 4463766088431025589}
-  m_Layer: 16
+  m_Layer: 8
   m_Name: PlayerCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5433,7 +5433,7 @@ GameObject:
   - component: {fileID: 526251955140346657}
   - component: {fileID: 528010206922662378}
   - component: {fileID: 937109853214143579}
-  m_Layer: 16
+  m_Layer: 8
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30847,7 +30847,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1081333279780956125}
-  m_Layer: 16
+  m_Layer: 8
   m_Name: HealthbarFuturistic2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41690,7 +41690,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4234213663334880781}
   - component: {fileID: 4059412025370956590}
-  m_Layer: 16
+  m_Layer: 8
   m_Name: HealthbarsController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51758,7 +51758,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0.07094694, y: -0.023773983, z: 0.07651302}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0000003427268, y: 0.4027328, z: 0.00000007543713}
+  m_ConnectedAnchor: {x: -0.0000007897617, y: 0.40273276, z: 0.00000020861626}
   serializedVersion: 2
   m_SwingAxis: {x: 0.36822674, y: 0.92822266, z: -0.053023644}
   m_TwistLimitSpring:
@@ -51854,6 +51854,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxDistance: 25
   _web: {fileID: 8644373150009213764}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 32776
 --- !u!120 &6083675570512418124
 LineRenderer:
   serializedVersion: 2
@@ -52372,10 +52375,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.6411804, y: 0.24365479, z: 0.7940789}
-  m_Center: {x: 2.0499674e-10, y: 0.38671544, z: 0.18784425}
+  m_Size: {x: 0.6411804, y: 0.55112857, z: 0.74285716}
+  m_Center: {x: -3.8249033e-17, y: 0.23297769, z: -0.038905237}
 --- !u!1 &5913243264845358798
 GameObject:
   m_ObjectHideFlags: 0
@@ -52385,7 +52388,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2331375666921839383}
-  m_Layer: 16
+  m_Layer: 8
   m_Name: PlayerHealthBar (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57695,7 +57698,7 @@ GameObject:
   - component: {fileID: 7713601643270914953}
   - component: {fileID: 4687664531953257239}
   - component: {fileID: 112731899685199738}
-  m_Layer: 16
+  m_Layer: 8
   m_Name: Foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63308,7 +63311,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2f432d8a346d262479edf81c82f67610, type: 2}
+  - {fileID: 2100000, guid: 28195f6f4f5ca414dbf3f5b4cbe1ebc3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

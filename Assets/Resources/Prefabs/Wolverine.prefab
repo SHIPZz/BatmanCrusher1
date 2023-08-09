@@ -10482,8 +10482,8 @@ Rigidbody:
   m_GameObject: {fileID: 1976515372778141761}
   serializedVersion: 4
   m_Mass: 20
-  m_Drag: 0.3
-  m_AngularDrag: 0
+  m_Drag: 1
+  m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -10595,6 +10595,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxDistance: 30
   _web: {fileID: 1670267426753820076}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &5930745134058443278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20824,7 +20827,7 @@ Rigidbody:
   m_GameObject: {fileID: 2584718420518583640}
   serializedVersion: 4
   m_Mass: 15
-  m_Drag: 1
+  m_Drag: 0.3
   m_AngularDrag: 0.3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -21931,10 +21934,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.34000003, y: 0.28908038, z: 0.3323138}
-  m_Center: {x: -5.215559e-12, y: 0.035010174, z: -0.024554418}
+  m_Size: {x: 0.7314578, y: 0.6286208, z: 0.8229009}
+  m_Center: {x: -0.017903894, y: 0.10685091, z: 0.013513518}
 --- !u!1 &3920359756329226140
 GameObject:
   m_ObjectHideFlags: 0
@@ -32197,7 +32200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hook: {fileID: 7399475653323092247}
-  _speed: 7
+  _speed: 5.5
   _rigidBody: {fileID: 4020246094796132340}
   _speedStep: 0.01
 --- !u!95 &4206463655871208889
@@ -47549,7 +47552,7 @@ Rigidbody:
   m_GameObject: {fileID: 7654942436277591177}
   serializedVersion: 4
   m_Mass: 10
-  m_Drag: 1
+  m_Drag: 0.3
   m_AngularDrag: 0.3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}

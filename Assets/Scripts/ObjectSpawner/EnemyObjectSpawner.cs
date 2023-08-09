@@ -95,7 +95,6 @@ public class EnemyObjectSpawner : MonoBehaviour
     private void SetHealthValue(GameObject prefab)
     {
         var enemyHealth = prefab.GetComponentInChildren<EnemyHealth>();
-        // enemyHealth.Health.InitialValue = _health;
         enemyHealth.Health.MaxValue = _health;
     }
 

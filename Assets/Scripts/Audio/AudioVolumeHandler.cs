@@ -66,14 +66,14 @@ public class AudioVolumeHandler : MonoBehaviour
         Debug.Log($"Set - {_slider.value}");
     }
 
-    private void StopMusic()
+    public void StopMusic()
     {
         _lastVolumeValue = _slider.value;
         ControlVolumeAudios(0);
         DataProvider.Instance.SaveVolume(_slider.value);
     }
 
-    private void RestartMusic()
+    public void RestartMusic()
     {
         Time.timeScale = 1f;
         _slider.value = _lastVolumeValue;
@@ -100,7 +100,7 @@ public class AudioVolumeHandler : MonoBehaviour
     {
         audio.DOKill(); 
 
-        audio.DOFade(volume, duration).SetUpdate(false);
+        audio.DOFade(volume, duration).SetUpdate(true);
     }
 
     private void ControlVolumeAudios(float value)

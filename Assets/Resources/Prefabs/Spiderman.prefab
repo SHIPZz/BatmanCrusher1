@@ -26535,6 +26535,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxDistance: 30
   _web: {fileID: 6668760051916173833}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &4990333699333072170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63100,8 +63103,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.34, y: 0.31701052, z: 0.30578467}
-  m_Center: {x: 0, y: 0.061124258, z: -0.025287436}
+  m_Size: {x: 0.34, y: 0.47772196, z: 0.46851727}
+  m_Center: {x: 0, y: 0.082557455, z: 0.011390643}
 --- !u!1 &8166024683423581979
 GameObject:
   m_ObjectHideFlags: 0

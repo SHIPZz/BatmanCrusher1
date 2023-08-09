@@ -29,6 +29,7 @@ public class GameOverPresenter : MonoBehaviour
     {
         _canvasGroupAlphaHandler.DisableAll();
         _victoryCanvas.gameObject.SetActive(false);
+        _gameOverCanvas.gameObject.SetActive(true);
         _gameOverCanvas.MoveCanvasAlpha(1, 1f);
         
         Invoke(nameof(InvokeEvent), 2.5f);

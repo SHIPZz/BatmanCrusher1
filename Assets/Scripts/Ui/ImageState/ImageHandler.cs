@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using I2.Loc;
 using UnityEngine;
@@ -17,22 +18,16 @@ public class ImageHandler : MonoBehaviour
     private readonly int _russianImageId = 2;
     private readonly int _turkishImageId = 3;
 
+    private readonly Dictionary<string, Action> _images = new();
+
     public int ChoosedImageId { get; private set; }
 
-    private void Start()
+    private void Awake()
     {
         SetInitialValueScale();
-
-        // SetImage(DataProvider.Instance.GetImage());
-
-        if (LocalizationManager.CurrentLanguage == "English")
-            _englishTick.ChangeScale(1, 0);
-
-        if (LocalizationManager.CurrentLanguage == "Russian")
-            _russianTick.ChangeScale(1, 0);
-
-        if (LocalizationManager.CurrentLanguage == "Turkish")
-            _turkishTick.ChangeScale(1, 0);
+        _images["en"] = OnEnglishLanguageChoosed;
+        _images["ru"] = OnRussianLanguageChoosed;
+        _images["tr"] = OnTurkishLanguageChoosed;
     }
 
     private void OnEnable()
@@ -49,10 +44,11 @@ public class ImageHandler : MonoBehaviour
         _turkishLanguage.onClick.RemoveListener(OnTurkishLanguageChoosed);
     }
 
-    public void SetImage(int imageId)
-    {
+    public void SetImage(string language) => 
+        _images[language]?.Invoke();
+
+    public void SetImage(int imageId) => 
         ChoosedImageId = imageId;
-    }
 
     private void SetInitialValueScale()
     {

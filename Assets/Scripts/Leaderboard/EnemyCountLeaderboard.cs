@@ -57,11 +57,7 @@ public class EnemyCountLeaderboard : MonoBehaviour
     }
 
     private void Init() =>
-        Leaderboard.GetEntries(Name, (result) =>
-        {
-            Debug.Log($"My rank = {result.userRank}");
-            FillArray(result);
-        });
+        Leaderboard.GetEntries(Name, FillArray);
 
 
     private void OnEnableLeaderboard()

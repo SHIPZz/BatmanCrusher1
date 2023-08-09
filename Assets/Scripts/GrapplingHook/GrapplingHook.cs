@@ -4,10 +4,9 @@ using UnityEngine;
 [RequireComponent(typeof(HookRenderer))]
 public class GrapplingHook : MonoBehaviour
 {
-    public const int HardCubeLayerMask = 15;
-
     [SerializeField] private float _maxDistance;
     [SerializeField] private GameObject _web;
+    [SerializeField] private LayerMask _layerMask;
 
     public event Action<Vector3> Grappled;
 
@@ -33,16 +32,15 @@ public class GrapplingHook : MonoBehaviour
 
         if (IsTimeNotGone(_elapsedTime))
             return;
-
-        if (IsColliderNull(newHit.collider) == false && IsWrongLayerMask(newHit.collider, HardCubeLayerMask) == true)
-            return;
         
+        if(newHit.collider.gameObject.layer == 15)
+            return;
+
         if (IsTargetVectorZero(newHit.point) == false)
         {
             _elapsedTime = Time.time;
             _web.SetActive(true);
-            _hookRenderer.DrawRope(newHit.point,_web);
-            // _web.transform.position = newHit.point;
+            _hookRenderer.DrawRope(newHit.point, _web);
 
             Grappled?.Invoke(newHit.point);
         }
@@ -59,11 +57,12 @@ public class GrapplingHook : MonoBehaviour
         var direction = (hit.point - transform.position).normalized;
         Ray ray = new(transform.position, direction);
 
-        if (Physics.Raycast(ray, out RaycastHit newHit, _maxDistance))
+        if (Physics.Raycast(ray, out RaycastHit newHit, _maxDistance, _layerMask))
         {
             return newHit;
         }
 
+        Debug.DrawRay(ray.origin, ray.direction, Color.black, 0.5f);
         return new();
     }
 
@@ -73,6 +72,7 @@ public class GrapplingHook : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
+            Debug.DrawRay(ray.direction, hit.point, Color.magenta, 1f);
             return hit;
         }
 

@@ -11,6 +11,8 @@ public class EnemyHitEffect : MonoBehaviour
 
     private Coroutine _delayDestroy;
     private EnemyHealth _enemyHealth;
+    private bool _isBlocked
+        ;
 
     private void Awake()
     {
@@ -20,15 +22,23 @@ public class EnemyHitEffect : MonoBehaviour
     private void OnEnable()
     {
         _enemyHealth.HitDamaged += OnHitDamaged;
+        _enemyHealth.Dead += BlockEffect;
     }
 
     private void OnDisable()
     {
         _enemyHealth.HitDamaged -= OnHitDamaged;
+        _enemyHealth.Dead -= BlockEffect;
     }
+
+    private void BlockEffect(EnemyHealth obj) => 
+        _isBlocked = true;
 
     private void OnHitDamaged()
     {
+        if(_isBlocked)
+            return;
+        
         if (_delayDestroy != null)
             StopCoroutine(_delayDestroy);
 

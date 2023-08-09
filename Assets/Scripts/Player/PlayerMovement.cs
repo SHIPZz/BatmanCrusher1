@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         if (_moveCoroutine != null)
         {
             _isMoved = false;
-            _speed = _initalSpeed;
+            _speed = 3.5f;
             StopCoroutine(_moveCoroutine);
         }
 
@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
             var force = (point - _rigidBody.position) * _speed;
             _isGrappling = true;
 
-            Debug.Log(_speed);
+            // Debug.Log(_speed);
             _grapplingVelocity = force;
 
             yield return new WaitForFixedUpdate();

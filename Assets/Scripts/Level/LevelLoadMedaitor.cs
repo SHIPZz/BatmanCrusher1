@@ -49,14 +49,10 @@ public class LevelLoadMedaitor : MonoBehaviour
 
         _loader.Load(_currentLevel);
         _camera.gameObject.SetActive(false);
-
-        WebApplication.InBackgroundChangeEvent += OnInBackgroundChange;
     }
 
     private void OnDisable()
     {
-        WebApplication.InBackgroundChangeEvent -= OnInBackgroundChange;
-
         foreach (var button in _claimButtons)
         {
             button.onClick.RemoveListener(LoadNextLevel);
@@ -91,17 +87,14 @@ public class LevelLoadMedaitor : MonoBehaviour
 
     private void RestartLevel()
     {
+        DOTween.Clear();
         SceneManager.LoadScene(1);
     }
 
     private void LoadNextLevel()
     {
-        Debug.Log("LOAD!!");
-
         _currentLevel++;
-
-        Debug.Log(_currentLevel + " LoadNextLevel");
-
+        
         DataProvider.Instance.SaveLevel(_currentLevel);
 
         _loader.Load(_currentLevel);

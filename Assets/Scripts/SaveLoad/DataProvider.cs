@@ -92,7 +92,6 @@ public class DataProvider
 
     public bool IsPlayerPurchased(int playerId)
     {
-        Debug.Log(_gameData.CharactersId.Count);
         return _gameData.CharactersId.Contains(playerId);
     }
 
@@ -101,8 +100,6 @@ public class DataProvider
         if (!IsPlayerPurchased(characterId))
         {
             _gameData.CharactersId.Add(characterId);
-
-            Debug.Log(_gameData.CharactersId.Count);
 
             _gameData.CharactersKey = JsonUtility.ToJson(_gameData.CharactersId);
 
@@ -115,15 +112,12 @@ public class DataProvider
     {
         _gameData = await _saveLoadSystem.Load();
 
-        Debug.Log(_gameData + "- gameData");
-
         try
         {
             JsonUtility.FromJsonOverwrite(_gameData.CharactersKey, _gameData.CharactersId);
         }
         catch (Exception e)
         {
-            Debug.Log("Json error");
             throw;
         }
     }
