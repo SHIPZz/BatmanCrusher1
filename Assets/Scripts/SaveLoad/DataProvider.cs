@@ -1,6 +1,7 @@
 using Agava.YandexGames;
 using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class DataProvider
@@ -108,7 +109,7 @@ public class DataProvider
     }
 
 
-    public async void LoadInitialData()
+    public async UniTask LoadInitialData()
     {
         _gameData = await _saveLoadSystem.Load();
 
@@ -118,7 +119,7 @@ public class DataProvider
         }
         catch (Exception e)
         {
-            throw;
+            Debug.Log(e.Message);
         }
     }
 }

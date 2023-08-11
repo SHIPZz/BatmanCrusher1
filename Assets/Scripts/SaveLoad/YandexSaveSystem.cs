@@ -1,5 +1,6 @@
 using Agava.YandexGames;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class YandexSaveSystem : ISaveService
@@ -14,14 +15,16 @@ public class YandexSaveSystem : ISaveService
         PlayerAccount.SetCloudSaveData(data);
     }
 
-    public async Task<GameData> Load()
+    public async UniTask<GameData> Load()
     {
         PlayerAccount.GetCloudSaveData(OnSuccessCallback);
 
-        while (_gameData is null)
+        while (_gameData is null || !_isSaveDataReceived)
         {
-            await Task.Yield();
+            await UniTask.Yield();
         }
+
+        _isSaveDataReceived = false;
         
         return _gameData;
     }

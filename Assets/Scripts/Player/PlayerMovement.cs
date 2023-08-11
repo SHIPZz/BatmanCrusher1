@@ -35,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
     public void SetVelocity(Vector3 velocity)
     {
         _rigidBody.velocity = velocity;
+        StopCoroutine(_moveCoroutine);
+        _isMoved = false;
         _isGrappling = false;
     }
 

@@ -17,7 +17,7 @@ public class Initialize : MonoBehaviour
         yield break;
 #endif
         yield return YandexGamesSdk.Initialize();
-        YandexGamesSdk.CallbackLogging = true;
+        YandexGamesSdk.CallbackLogging = false;
         StartGame();
     }
     

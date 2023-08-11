@@ -63,7 +63,6 @@ public class AudioVolumeHandler : MonoBehaviour
     {
         _lastVolumeValue = value;
         _slider.value = value;
-        Debug.Log($"Set - {_slider.value}");
     }
 
     public void StopMusic()

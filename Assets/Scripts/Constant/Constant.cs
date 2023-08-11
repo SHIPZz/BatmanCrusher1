@@ -3,8 +3,8 @@ public class Constant
     public const int BatmanId = 0;
     public const int WolverineId = 1;
     public const int SpiderManId = 2;
-    public const int SpiderPrice = 4500;
-    public const int WolverinePrice = 4000;
+    public const int SpiderPrice = 4000;
+    public const int WolverinePrice = 3000;
     public const int BatmanPrice = 0;
     public const int Reward = 100;
     public const int MultiplierReward = 2;

@@ -1,8 +1,9 @@
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 
 public interface ISaveService
 {
     void Save(GameData gameData);
 
-    Task<GameData> Load();
+    UniTask<GameData> Load();
 }

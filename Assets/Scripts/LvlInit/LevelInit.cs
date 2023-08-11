@@ -59,13 +59,12 @@ namespace LvlInit
             offScreenIndicator.SetCamera(_camera);
             SetDistanceCanvasActive(false);
             ConfigurePlayCanvas(false);
-            YandexGamesSdk.CallbackLogging = false;
-
-            SetPlayerForObjectSpawners();
         }
 
-        private void Start()
+        private async void Start()
         {
+            await DataProvider.Instance.LoadInitialData();
+            
             StartCoroutine(nameof(InitializeDependencies));
         }
 
@@ -118,7 +117,6 @@ namespace LvlInit
 
         private IEnumerator InitializeDependencies()
         {
-            yield return new WaitForSeconds(0.8f);
             _playerSpawner.SetCharacterId(DataProvider.Instance.GetCharacter());
             _playerSelectedCharacter.SetInitialCharacter(DataProvider.Instance.GetCharacter());
             _enemyDestroyingHandler.SetCount(DataProvider.Instance.GetEnemyCount());
@@ -137,14 +135,6 @@ namespace LvlInit
         private void SetDistanceCanvasActive(bool isActive)
         {
             _distanceCanvas.GetComponent<Canvas>().enabled = isActive;
-        }
-
-        private void SetPlayerForObjectSpawners()
-        {
-            foreach (EnemyObjectSpawner objectSpawner in _objectSpawners)
-            {
-                objectSpawner.SetPlayerSpawner(_playerSpawner);
-            }
         }
 
         private void ConfigureCamera(float targetValue, float duration) =>

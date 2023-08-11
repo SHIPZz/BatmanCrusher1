@@ -30,20 +30,18 @@ public class GrapplingHook : MonoBehaviour
 
         RaycastHit newHit = GetRaycastHitFromPlayer(hit);
 
-        if (IsTimeNotGone(_elapsedTime))
+        if (IsTimeNotGone(_elapsedTime) || 
+            IsColliderNull(newHit.collider) || IsTargetVectorZero(newHit.point))
             return;
         
-        if(newHit.collider.gameObject.layer == 15)
+        if(IsWrongLayerMask(newHit.collider, 15))
             return;
 
-        if (IsTargetVectorZero(newHit.point) == false)
-        {
-            _elapsedTime = Time.time;
-            _web.SetActive(true);
-            _hookRenderer.DrawRope(newHit.point, _web);
+        _elapsedTime = Time.time;
+        _web.SetActive(true);
+        _hookRenderer.DrawRope(newHit.point, _web);
 
-            Grappled?.Invoke(newHit.point);
-        }
+        Grappled?.Invoke(newHit.point);
     }
 
     public void DisableHook()

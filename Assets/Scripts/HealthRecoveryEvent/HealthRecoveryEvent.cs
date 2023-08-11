@@ -11,11 +11,13 @@ public class HealthRecoveryEvent : MonoBehaviour
    private Collider _playerCollider;
    private PlayingAdvertisingHandler _playingAdvertisingHandler;
    private PlayerMovement _playerMovement;
+   private GrapplingHook _grapplingHook;
 
    private void Awake()
    {
        _playerCollider = _player.GetComponent<Collider>();
        _playerMovement = _player.GetComponent<PlayerMovement>();
+       _grapplingHook = _player.GetComponentInChildren<GrapplingHook>();
    }
 
    private void OnDisable()
@@ -35,7 +37,8 @@ public class HealthRecoveryEvent : MonoBehaviour
         _player.Health.RecoverHealth();
         _healthBar.SetHealthValue((float)_player.Health.InitialValue);
 
-        _player.gameObject.transform.parent.parent.gameObject.SetActive(true);
+        _player.transform.parent.parent.gameObject.SetActive(true);
+        _grapplingHook.DisableHook();
         StartCoroutine(MakePlayerImmortalCoroutine());
     }
 

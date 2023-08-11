@@ -22,7 +22,7 @@ public class Player : MonoBehaviour, IDamageable
         _health = GetComponent<Health>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         Physics.IgnoreLayerCollision(CharacterLayer, CharacterLayer, true);
 
@@ -31,11 +31,9 @@ public class Player : MonoBehaviour, IDamageable
             body.interpolation = RigidbodyInterpolation.Interpolate;
             body.drag = 3f;
             body.angularDrag = 0.5f;
+            body.isKinematic = false;
         });
-    }
-
-    private void OnEnable()
-    {
+        
         _health.ValueZeroReached += OnHealthZeroReached;
     }
 

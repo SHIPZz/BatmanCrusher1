@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Agava.WebUtility;
 using Agava.YandexGames;
 using DG.Tweening;
 using LvlInit;
@@ -22,10 +20,8 @@ public class LevelLoadMedaitor : MonoBehaviour
     private readonly int _firstLevel = 1;
     private int _currentLevel;
 
-    private void Awake()
+    private async void Awake()
     {
-        DataProvider.Instance.LoadInitialData();
-
         foreach (var button in _claimButtons)
         {
             button.onClick.AddListener(LoadNextLevel);
@@ -39,12 +35,13 @@ public class LevelLoadMedaitor : MonoBehaviour
         _gameOverPresenter.CanvasTurned += RestartGame;
     }
 
-    private IEnumerator Start()
+    private async void Start()
     {
-        yield return new WaitForSeconds(2f);
+        await DataProvider.Instance.LoadInitialData();
+        
         _currentLevel = DataProvider.Instance.GetLevel();
 
-        if (_currentLevel > 3)
+        if (_currentLevel > 4)
             InterstitialAd.Show();
 
         _loader.Load(_currentLevel);
@@ -76,13 +73,7 @@ public class LevelLoadMedaitor : MonoBehaviour
             levelInit.UploadData();
         }
 
-        DOTween.Sequence().AppendInterval(3f).OnComplete(() => _loader.Load(1));
-    }
-
-    private void OnInBackgroundChange(bool inBackground)
-    {
-        AudioListener.pause = inBackground;
-        AudioListener.volume = inBackground ? 0f : 1f;
+        DOTween.Sequence().AppendInterval(2f).OnComplete(() => SceneManager.LoadScene(1));
     }
 
     private void RestartLevel()
@@ -93,8 +84,10 @@ public class LevelLoadMedaitor : MonoBehaviour
 
     private void LoadNextLevel()
     {
+        _currentLevel = DataProvider.Instance.GetLevel();
+
         _currentLevel++;
-        
+
         DataProvider.Instance.SaveLevel(_currentLevel);
 
         _loader.Load(_currentLevel);

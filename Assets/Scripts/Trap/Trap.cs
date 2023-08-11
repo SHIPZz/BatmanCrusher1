@@ -13,6 +13,10 @@ public class Trap : MonoBehaviour
     private void Awake()
     {
         gameObject.layer = IgnoreRaycastLayer;
+        
+        if (transform.parent != null)
+            transform.parent.gameObject.layer = IgnoreRaycastLayer;
+        
         GetComponent<Collider>().isTrigger = true;
     }
 

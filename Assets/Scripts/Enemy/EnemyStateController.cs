@@ -61,12 +61,12 @@ public class EnemyStateController : MonoBehaviour, IEnemyStateController
         _navMeshAgent.speed = 7;
     }
 
-    public void SetPlayer(Player player) =>
-        _player = player;
-
     public void SetPlayerSpawner(PlayerSpawner playerSpawner)
     {
         _playerSpawner = playerSpawner;
         _playerSpawner.Spawned += SetPlayer;
     }
+
+    private void SetPlayer(Player player) =>
+        _player = player;
 }

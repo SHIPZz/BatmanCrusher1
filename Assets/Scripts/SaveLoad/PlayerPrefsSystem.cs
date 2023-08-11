@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class PlayerPrefsSystem : ISaveService
@@ -15,7 +16,7 @@ public class PlayerPrefsSystem : ISaveService
         PlayerPrefs.Save();
     }
 
-    public async Task<GameData> Load()
+    public async UniTask<GameData> Load()
     {
         if (PlayerPrefs.HasKey(DataKey))
         {
@@ -24,7 +25,7 @@ public class PlayerPrefsSystem : ISaveService
             return _gameData;
         }
 
-        await Task.Yield();
+        await UniTask.Yield();
 
         return new GameData();
     }

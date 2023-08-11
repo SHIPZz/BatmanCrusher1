@@ -12,6 +12,17 @@ public class LevelLoader : MonoBehaviour
         _levels = _levelStorage.GetData();
     }
 
+    public int GetActiveLevel()
+    {
+        foreach (var level in _levels)
+        {
+            if (level.gameObject.activeSelf)
+                return level.Index;
+        }
+
+        return 0;
+    }
+
     public void Load(int level)
     {
         foreach (Level lvl in _levels)

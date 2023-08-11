@@ -19,7 +19,6 @@ public class EnemyDestroyingHandler : MonoBehaviour
     public void SetCount(int count)
     {
         Count = count;
-        print(Count);
     }
 
     private void OnEnemyDestroyed(int obj)

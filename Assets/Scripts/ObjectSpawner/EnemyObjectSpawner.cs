@@ -10,6 +10,7 @@ public class EnemyObjectSpawner : MonoBehaviour
 {
     [SerializeField] private ObjectTypeId _objectTypeId;
     [SerializeField] private int _health;
+    [SerializeField] private PlayerSpawner _playerSpawner;
 
     public event Action<EnemyObjectSpawner> Destroyed;
     public event Action<PatrolZone> PatrolZoneSpawned;
@@ -19,7 +20,6 @@ public class EnemyObjectSpawner : MonoBehaviour
     private GameFactory _gameFactory;
     private EnemyDestruction _enemyDestruction;
     private Player _player;
-    private PlayerSpawner _playerSpawner;
 
     private void Start()
     {
@@ -46,7 +46,7 @@ public class EnemyObjectSpawner : MonoBehaviour
             case ObjectTypeId.ToadStool:
                 Create(Constant.ToadStoolPrefab);
                 break;
-            
+
             case ObjectTypeId.PurpleSpider:
                 Create(Constant.PurpleSpider);
                 break;
@@ -68,7 +68,7 @@ public class EnemyObjectSpawner : MonoBehaviour
         prefab.transform.position = transform.position;
         GetEnemyDestruction(prefab);
         _enemyDestruction.Destroyed += Disable;
-        
+
         PatrolZone patrolZone = GetPatrolZone(prefab);
 
         var enemyStateController = prefab.GetComponentInChildren<IEnemyStateController>();
@@ -109,13 +109,15 @@ public class EnemyObjectSpawner : MonoBehaviour
         _enemyDestruction = prefab.GetComponentInChildren<EnemyDestruction>();
     }
 
-    public void SetPlayerSpawner(PlayerSpawner playerSpawner) =>
-        _playerSpawner = playerSpawner;
+    public void SetPlayerSpawner(PlayerSpawner playerSpawner)
+    {
+        // _playerSpawner = playerSpawner;
+    }
 
-    private void SetPlayerToEnemyStateController(IEnemyStateController enemyStateController, 
+    private void SetPlayerToEnemyStateController(IEnemyStateController enemyStateController,
         PlayerSpawner playerSpawner) =>
         enemyStateController.SetPlayerSpawner(playerSpawner);
-    
+
     private bool IsHealthSet(int value) =>
         _health > 0;
 
