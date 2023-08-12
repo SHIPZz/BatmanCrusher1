@@ -153,7 +153,7 @@ Transform:
   m_GameObject: {fileID: 281321897718045821}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.72, z: -1.13}
+  m_LocalPosition: {x: 0, y: 1.55, z: -1.13}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5543,7 +5543,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281321898300567402}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 23257a295c7a2e74ea3c91fc781add7b, type: 3}
   m_Controller: {fileID: 9100000, guid: 688230d3de5423545871f60dc3638bab, type: 2}
   m_CullingMode: 1
@@ -31459,12 +31459,12 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.99999994, z: 0, w: -0.00043630067}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8025973122514143208}
   - {fileID: 8832460942019460462}
   - {fileID: 281321898300567403}
-  - {fileID: 8025973122514143208}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -180.05, z: 0}
 --- !u!114 &281321899251373042
@@ -31491,7 +31491,7 @@ MonoBehaviour:
   - {fileID: 8025973122735043573}
   - {fileID: 8025973123828119432}
   - {fileID: 8025973123391667612}
-  _height: 1
+  _height: 1.5
 --- !u!1 &281321899269674057
 GameObject:
   m_ObjectHideFlags: 0
@@ -31519,8 +31519,8 @@ Transform:
   m_GameObject: {fileID: 281321899269674057}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1.49, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 281321898300567403}
@@ -46993,9 +46993,9 @@ GameObject:
   - component: {fileID: 8025973122251930042}
   - component: {fileID: 8025973122251930046}
   - component: {fileID: 8025973122251930047}
-  - component: {fileID: 8025973122251930040}
   - component: {fileID: 8025973122251930041}
-  m_Layer: 0
+  - component: {fileID: 7710970480491139358}
+  m_Layer: 2
   m_Name: Spider Toxin_sh_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47067,28 +47067,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8025973122251930040
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8025973122251930043}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!54 &8025973122251930041
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -47116,6 +47094,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &7710970480491139358
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8025973122251930043}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5388329, y: 0.6060941, z: 0.50380933}
+  m_Center: {x: -0.000000004656613, y: 0, z: -0.00000014901161}
 --- !u!1 &8025973122394572597
 GameObject:
   m_ObjectHideFlags: 0
@@ -47127,9 +47126,9 @@ GameObject:
   - component: {fileID: 8025973122394572596}
   - component: {fileID: 8025973122394572584}
   - component: {fileID: 8025973122394572585}
-  - component: {fileID: 8025973122394572586}
   - component: {fileID: 8025973122394572587}
-  m_Layer: 0
+  - component: {fileID: 102987718452440715}
+  m_Layer: 2
   m_Name: Spider Toxin_sh_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47201,28 +47200,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8025973122394572586
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8025973122394572597}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!54 &8025973122394572587
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -47250,6 +47227,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &102987718452440715
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8025973122394572597}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.4314122, y: 0.75767225, z: 0.5613139}
+  m_Center: {x: 0.00000017881393, y: 0, z: -0.000000074505806}
 --- !u!1 &8025973122514143209
 GameObject:
   m_ObjectHideFlags: 0
@@ -47259,7 +47257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8025973122514143208}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spider Toxin_root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47302,9 +47300,9 @@ GameObject:
   - component: {fileID: 8025973122580730009}
   - component: {fileID: 8025973122580730013}
   - component: {fileID: 8025973122580730014}
-  - component: {fileID: 8025973122580730015}
   - component: {fileID: 8025973122580730008}
-  m_Layer: 0
+  - component: {fileID: 5782739989456445030}
+  m_Layer: 2
   m_Name: Spider Toxin_sh_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47376,28 +47374,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8025973122580730015
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8025973122580730010}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!54 &8025973122580730008
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -47425,6 +47401,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &5782739989456445030
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8025973122580730010}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.71233463, y: 0.85355467, z: 0.6324507}
+  m_Center: {x: 0.00000011920929, y: 0, z: -0.000000059604645}
 --- !u!1 &8025973122615812757
 GameObject:
   m_ObjectHideFlags: 0
@@ -47436,9 +47433,9 @@ GameObject:
   - component: {fileID: 8025973122615812756}
   - component: {fileID: 8025973122615812744}
   - component: {fileID: 8025973122615812745}
-  - component: {fileID: 8025973122615812746}
   - component: {fileID: 8025973122615812747}
-  m_Layer: 0
+  - component: {fileID: 3168861157714850716}
+  m_Layer: 2
   m_Name: Spider Toxin_sh_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47510,28 +47507,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8025973122615812746
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8025973122615812757}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!54 &8025973122615812747
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -47559,6 +47534,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &3168861157714850716
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8025973122615812757}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.3392794, y: 0.6632782, z: 0.74193746}
+  m_Center: {x: -0.00000008940697, y: 0, z: 0.00000008940697}
 --- !u!1 &8025973122735043573
 GameObject:
   m_ObjectHideFlags: 0
@@ -47570,9 +47566,9 @@ GameObject:
   - component: {fileID: 8025973122735043572}
   - component: {fileID: 8025973122735043560}
   - component: {fileID: 8025973122735043561}
-  - component: {fileID: 8025973122735043562}
   - component: {fileID: 8025973122735043563}
-  m_Layer: 0
+  - component: {fileID: 4808642596825907369}
+  m_Layer: 2
   m_Name: Spider Toxin_sh_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47644,28 +47640,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8025973122735043562
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8025973122735043573}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!54 &8025973122735043563
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -47693,6 +47667,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &4808642596825907369
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8025973122735043573}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.43813455, y: 0.7205677, z: 0.5904056}
+  m_Center: {x: 0.00000029802322, y: 0, z: 0.00000011920929}
 --- !u!1 &8025973122913841353
 GameObject:
   m_ObjectHideFlags: 0
@@ -47704,9 +47699,9 @@ GameObject:
   - component: {fileID: 8025973122913841352}
   - component: {fileID: 8025973122913841356}
   - component: {fileID: 8025973122913841357}
-  - component: {fileID: 8025973122913841358}
   - component: {fileID: 8025973122913841359}
-  m_Layer: 0
+  - component: {fileID: 606970758507541120}
+  m_Layer: 2
   m_Name: Spider Toxin_sh_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47778,28 +47773,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8025973122913841358
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8025973122913841353}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!54 &8025973122913841359
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -47827,6 +47800,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &606970758507541120
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8025973122913841353}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.9292097, y: 0.7485161, z: 0.538315}
+  m_Center: {x: 0.00000008940697, y: 0, z: 0.00000008940697}
 --- !u!1 &8025973123391667612
 GameObject:
   m_ObjectHideFlags: 0
@@ -47838,9 +47832,9 @@ GameObject:
   - component: {fileID: 8025973123391667607}
   - component: {fileID: 8025973123391667600}
   - component: {fileID: 8025973123391667601}
-  - component: {fileID: 8025973123391667602}
   - component: {fileID: 8025973123391667603}
-  m_Layer: 0
+  - component: {fileID: 7281366420956021678}
+  m_Layer: 2
   m_Name: Spider Toxin_sh_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47912,28 +47906,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8025973123391667602
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8025973123391667612}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!54 &8025973123391667603
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -47961,6 +47933,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &7281366420956021678
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8025973123391667612}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.8248658, y: 0.67437035, z: 0.64561296}
+  m_Center: {x: 0.000000029802322, y: 0, z: -0.000000044703484}
 --- !u!1 &8025973123423570848
 GameObject:
   m_ObjectHideFlags: 0
@@ -47972,9 +47965,9 @@ GameObject:
   - component: {fileID: 8025973123423570855}
   - component: {fileID: 8025973123423570843}
   - component: {fileID: 8025973123423570852}
-  - component: {fileID: 8025973123423570853}
   - component: {fileID: 8025973123423570854}
-  m_Layer: 0
+  - component: {fileID: 3347879226013630682}
+  m_Layer: 2
   m_Name: Spider Toxin_sh_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48046,28 +48039,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8025973123423570853
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8025973123423570848}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!54 &8025973123423570854
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -48095,6 +48066,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &3347879226013630682
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8025973123423570848}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.7357802, y: 0.74639523, z: 0.47094724}
+  m_Center: {x: -0.00000011920929, y: 0, z: -0.00000008940697}
 --- !u!1 &8025973123534814471
 GameObject:
   m_ObjectHideFlags: 0
@@ -48106,9 +48098,9 @@ GameObject:
   - component: {fileID: 8025973123534814470}
   - component: {fileID: 8025973123534814586}
   - component: {fileID: 8025973123534814587}
-  - component: {fileID: 8025973123534814468}
   - component: {fileID: 8025973123534814469}
-  m_Layer: 0
+  - component: {fileID: 4949980147869131013}
+  m_Layer: 2
   m_Name: Spider Toxin_sh_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48180,28 +48172,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8025973123534814468
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8025973123534814471}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!54 &8025973123534814469
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -48229,6 +48199,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &4949980147869131013
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8025973123534814471}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.52843785, y: 0.7347204, z: 0.543146}
+  m_Center: {x: -0.00000023841858, y: 0, z: 0.00000014901161}
 --- !u!1 &8025973123828119432
 GameObject:
   m_ObjectHideFlags: 0
@@ -48240,9 +48231,9 @@ GameObject:
   - component: {fileID: 8025973123828119439}
   - component: {fileID: 8025973123828119427}
   - component: {fileID: 8025973123828119436}
-  - component: {fileID: 8025973123828119437}
   - component: {fileID: 8025973123828119438}
-  m_Layer: 0
+  - component: {fileID: 8468331799183881629}
+  m_Layer: 2
   m_Name: Spider Toxin_sh_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48314,28 +48305,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8025973123828119437
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8025973123828119432}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!54 &8025973123828119438
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -48363,6 +48332,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &8468331799183881629
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8025973123828119432}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1527126, y: 1.1073554, z: 0.9859867}
+  m_Center: {x: -0.00000014901161, y: 0, z: 0.000000009313226}
 --- !u!1 &8105976950780103832
 GameObject:
   m_ObjectHideFlags: 0

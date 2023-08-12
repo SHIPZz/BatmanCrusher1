@@ -89,12 +89,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 326261149414690292}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 389.06747, y: 647.78986, z: -222.17053}
+  m_LocalRotation: {x: -0.00000590086, y: -0.000009597614, z: 0.0002470446, w: 1}
+  m_LocalPosition: {x: 388.75262, y: 645.73584, z: -222.16608}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8631987368327574479}
+  m_Father: {fileID: 4007196850290288639}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6913748710044595800
 MonoBehaviour:
@@ -108,8 +108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3cf1a8d7cb42142bc8e88fc1347845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthBar: {fileID: 0}
+  _healthBar: {fileID: 4334588868020764297}
   _player: {fileID: 7916064858393450832}
+  _healthbarsController: {fileID: 8537679778077532213}
 --- !u!1 &404139318712550665
 GameObject:
   m_ObjectHideFlags: 0
@@ -10565,8 +10566,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.80150115, y: 0.87994736, z: 0.62783706}
-  m_Center: {x: 0.028911106, y: 0.29740328, z: -0.009022444}
+  m_Size: {x: 0.80150115, y: 1.1131656, z: 0.62783706}
+  m_Center: {x: 0.028911097, y: 0.1807958, z: -0.009023078}
 --- !u!114 &4378696296900237111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10580,7 +10581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shootPoint: {fileID: 9095939396102639209}
-  _drawSpeed: 30
+  _drawSpeed: 15
 --- !u!114 &7399475653323092247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10597,7 +10598,7 @@ MonoBehaviour:
   _web: {fileID: 1670267426753820076}
   _layerMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 32776
 --- !u!114 &5930745134058443278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32055,6 +32056,7 @@ Transform:
   - {fileID: 3869465337723785969}
   - {fileID: 3656791915694560733}
   - {fileID: 5975554896943612824}
+  - {fileID: 5789051263502893630}
   - {fileID: 359628280212466525}
   - {fileID: 8509346139665264296}
   - {fileID: 1054887454553672678}
@@ -32551,7 +32553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 2638459655347259735}
-  _healthBar: {fileID: 0}
+  _healthBar: {fileID: 4334588868020764297}
 --- !u!1 &5642953013357942910
 GameObject:
   m_ObjectHideFlags: 0
@@ -42485,7 +42487,6 @@ Transform:
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5789051263502893630}
   - {fileID: 1021523670699002858}
   - {fileID: 6959132066241873169}
   - {fileID: 45252976433628516}

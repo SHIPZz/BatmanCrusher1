@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _grapplingVelocity;
     private Coroutine _moveCoroutine;
     private bool _isMoved;
-    private float _initalSpeed;
+    private float _targetSpeed = 8f;
 
 
     public bool IsGrappling => _isGrappling;
@@ -24,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable()
     {
         _hook.Grappled += OnGrappled;
-        _initalSpeed = _speed;
     }
 
     private void OnDisable()
@@ -55,20 +54,19 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator MovePosition(Vector3 point)
     {
-        if (!_isMoved) 
+        if (!_isMoved)
             yield break;
-        
+
         while (Vector3.Distance(_rigidBody.position, point) > ActiveDistance)
         {
             _speed += _speedStep;
 
-            if (_speed > 7)
-                _speed = 7;
+            if (_speed > _targetSpeed)
+                _speed = _targetSpeed;
 
             var force = (point - _rigidBody.position) * _speed;
             _isGrappling = true;
 
-            // Debug.Log(_speed);
             _grapplingVelocity = force;
 
             yield return new WaitForFixedUpdate();

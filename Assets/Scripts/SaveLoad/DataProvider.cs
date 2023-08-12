@@ -17,7 +17,6 @@ public class DataProvider
     public static DataProvider Instance => _instance ??= new DataProvider();
 
     public event Action<int> ChoosedPlayer;
-    public event Action<int> LevelChanged;
 
     private DataProvider()
     {
@@ -44,7 +43,6 @@ public class DataProvider
     {
         _gameData.Level = level;
         _saveLoadSystem.Save(_gameData);
-        LevelChanged?.Invoke(_gameData.Level);
     }
 
     public void SaveVolume(float volume)

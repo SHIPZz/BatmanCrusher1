@@ -31,12 +31,12 @@ public class VictoryView : MonoBehaviour
     private void AddListeners()
     {
         _claimButton.onClick.AddListener(OnClaimButtonClicked);
-        _playingAdvertisingHandler.RewardedCallbackPlayed += OnRewardButtonClicked;
+        _playingAdvertisingHandler.RewardedClosed += OnRewardButtonClicked;
     }
 
     private void RemoveListeners()
     {
-        _playingAdvertisingHandler.RewardedCallbackPlayed -= OnRewardButtonClicked;
+        _playingAdvertisingHandler.RewardedClosed -= OnRewardButtonClicked;
         _claimButton.onClick.RemoveListener(OnClaimButtonClicked);
     }
 

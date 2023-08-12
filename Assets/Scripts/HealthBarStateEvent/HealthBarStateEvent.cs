@@ -5,12 +5,8 @@ public class HealthBarStateEvent : MonoBehaviour
 {
     [SerializeField] private Healthbar _healthBar;
     [SerializeField] private Health _player;
-    private HealthbarsController _healthbarsController;
+    [SerializeField] private HealthbarsController _healthbarsController;
 
-    private void Awake()
-    {
-        _healthbarsController = GetComponentInChildren<HealthbarsController>();
-    }
 
     private void OnEnable()
     {

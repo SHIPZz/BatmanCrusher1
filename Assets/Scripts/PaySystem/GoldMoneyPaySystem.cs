@@ -9,7 +9,6 @@ public class GoldMoneyPaySystem
     {
         if (!Wallet.Instance.TryRemoveMoney(money))
         {
-            Debug.Log("Недостаточно средств");
             IsMoneyEnough?.Invoke(false);
             return false;
         }

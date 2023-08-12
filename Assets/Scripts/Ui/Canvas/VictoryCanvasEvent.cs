@@ -20,6 +20,5 @@ public class VictoryCanvasEvent : MonoBehaviour
     {
         VictoryModel victoryModel = new VictoryModel(chestCount);
         _victoryView.Show(new VictoryPresenter(victoryModel));
-        //Invoke(nameof(InvokeWithDelay), _delay);
     }
 }

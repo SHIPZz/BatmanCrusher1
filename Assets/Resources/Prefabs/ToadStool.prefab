@@ -31552,8 +31552,8 @@ GameObject:
   - component: {fileID: 3987895697294324515}
   - component: {fileID: 3987895697294324517}
   - component: {fileID: 3987895697294324516}
-  - component: {fileID: 3987895697294324519}
   - component: {fileID: 3987895697294324518}
+  - component: {fileID: 3809139063874798755}
   m_Layer: 2
   m_Name: Toadstool_sh_7
   m_TagString: Untagged
@@ -31626,28 +31626,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3987895697294324519
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3987895697294324514}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5164627406669472654, guid: 382d92923fb09574cbcb06adf409f166, type: 2}
 --- !u!54 &3987895697294324518
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31675,6 +31653,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &3809139063874798755
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3987895697294324514}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.5214021, y: 0.8934415, z: 0.59005153}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3987895697326014174
 GameObject:
   m_ObjectHideFlags: 0
@@ -31686,8 +31685,8 @@ GameObject:
   - component: {fileID: 3987895697326014175}
   - component: {fileID: 3987895697326014161}
   - component: {fileID: 3987895697326014160}
-  - component: {fileID: 3987895697326014163}
   - component: {fileID: 3987895697326014162}
+  - component: {fileID: 5014878324708550162}
   m_Layer: 2
   m_Name: Toadstool_sh_6
   m_TagString: Untagged
@@ -31760,28 +31759,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3987895697326014163
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3987895697326014174}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5706909113874429086, guid: 382d92923fb09574cbcb06adf409f166, type: 2}
 --- !u!54 &3987895697326014162
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31809,6 +31786,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &5014878324708550162
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3987895697326014174}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.85662633, y: 0.8777254, z: 0.6887524}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3987895697926344302
 GameObject:
   m_ObjectHideFlags: 0
@@ -31948,8 +31946,8 @@ GameObject:
   - component: {fileID: 3987895698361485071}
   - component: {fileID: 3987895698361485057}
   - component: {fileID: 3987895698361485056}
-  - component: {fileID: 3987895698361485059}
   - component: {fileID: 3987895698361485058}
+  - component: {fileID: 2455808076512650585}
   m_Layer: 2
   m_Name: Toadstool_sh_5
   m_TagString: Untagged
@@ -32022,28 +32020,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3987895698361485059
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3987895698361485070}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7987409111890207744, guid: 382d92923fb09574cbcb06adf409f166, type: 2}
 --- !u!54 &3987895698361485058
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -32071,6 +32047,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &2455808076512650585
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3987895698361485070}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0206482, y: 1.4052737, z: 0.85064316}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3987895698365261534
 GameObject:
   m_ObjectHideFlags: 0
@@ -32082,8 +32079,8 @@ GameObject:
   - component: {fileID: 3987895698365261535}
   - component: {fileID: 3987895698365261521}
   - component: {fileID: 3987895698365261520}
-  - component: {fileID: 3987895698365261523}
   - component: {fileID: 3987895698365261522}
+  - component: {fileID: 5390580632097605852}
   m_Layer: 2
   m_Name: Toadstool_sh_3
   m_TagString: Untagged
@@ -32156,28 +32153,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3987895698365261523
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3987895698365261534}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5942457523323165537, guid: 382d92923fb09574cbcb06adf409f166, type: 2}
 --- !u!54 &3987895698365261522
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -32205,6 +32180,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &5390580632097605852
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3987895698365261534}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.23261982, y: 0.24123728, z: 0.10301928}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3987895698381626844
 GameObject:
   m_ObjectHideFlags: 0
@@ -32216,8 +32212,8 @@ GameObject:
   - component: {fileID: 3987895698381626845}
   - component: {fileID: 3987895698381626847}
   - component: {fileID: 3987895698381626846}
-  - component: {fileID: 3987895698381626833}
   - component: {fileID: 3987895698381626832}
+  - component: {fileID: 8543020026570995229}
   m_Layer: 2
   m_Name: Toadstool_sh_1
   m_TagString: Untagged
@@ -32290,28 +32286,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3987895698381626833
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3987895698381626844}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3109292631866812418, guid: 382d92923fb09574cbcb06adf409f166, type: 2}
 --- !u!54 &3987895698381626832
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -32339,6 +32313,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &8543020026570995229
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3987895698381626844}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.9363823, y: 1.3244199, z: 0.91371775}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3987895698412416847
 GameObject:
   m_ObjectHideFlags: 0
@@ -32350,8 +32345,8 @@ GameObject:
   - component: {fileID: 3987895698412416832}
   - component: {fileID: 3987895698412416834}
   - component: {fileID: 3987895698412416833}
-  - component: {fileID: 3987895698412416836}
   - component: {fileID: 3987895698412416835}
+  - component: {fileID: 368361519016874452}
   m_Layer: 2
   m_Name: Toadstool_sh_4
   m_TagString: Untagged
@@ -32424,28 +32419,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3987895698412416836
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3987895698412416847}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1785831979247701723, guid: 382d92923fb09574cbcb06adf409f166, type: 2}
 --- !u!54 &3987895698412416835
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -32473,6 +32446,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &368361519016874452
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3987895698412416847}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.53358644, y: 0.64308727, z: 0.57496715}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3987895698467028740
 GameObject:
   m_ObjectHideFlags: 0
@@ -32547,8 +32541,8 @@ GameObject:
   - component: {fileID: 3987895698980264241}
   - component: {fileID: 3987895698980264243}
   - component: {fileID: 3987895698980264242}
-  - component: {fileID: 3987895698980264245}
   - component: {fileID: 3987895698980264244}
+  - component: {fileID: 3437084546682319861}
   m_Layer: 2
   m_Name: Toadstool_sh_2
   m_TagString: Untagged
@@ -32621,28 +32615,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3987895698980264245
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3987895698980264240}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1097917736924547214, guid: 382d92923fb09574cbcb06adf409f166, type: 2}
 --- !u!54 &3987895698980264244
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -32670,6 +32642,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &3437084546682319861
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3987895698980264240}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.91388375, y: 0.5984427, z: 0.8984693}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4343436947820428821
 GameObject:
   m_ObjectHideFlags: 0

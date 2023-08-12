@@ -1,7 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectPartState : MonoBehaviour
 {
+    private const int IgnoreRaycast = 2;
+    
     [SerializeField] private EnemyDestruction _enemy;
     [SerializeField] private GameObject[] _newParts;
     [SerializeField] private float _height;
@@ -11,6 +14,11 @@ public class ObjectPartState : MonoBehaviour
     private void Awake()
     {
         this.SetActive(_newParts, false, 0);
+        
+        foreach (var part in _newParts)
+        {
+            part.layer = IgnoreRaycast;
+        }
     }
 
     private void OnEnable()

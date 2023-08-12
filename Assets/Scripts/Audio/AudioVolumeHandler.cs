@@ -65,16 +65,15 @@ public class AudioVolumeHandler : MonoBehaviour
         _slider.value = value;
     }
 
-    public void StopMusic()
+    private void StopMusic()
     {
         _lastVolumeValue = _slider.value;
         ControlVolumeAudios(0);
         DataProvider.Instance.SaveVolume(_slider.value);
     }
 
-    public void RestartMusic()
+    private void RestartMusic()
     {
-        Time.timeScale = 1f;
         _slider.value = _lastVolumeValue;
         ControlVolumeAudios(_lastVolumeValue);
         DataProvider.Instance.SaveVolume(_slider.value);

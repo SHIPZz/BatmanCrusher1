@@ -20,6 +20,7 @@ public class VictoryPresenter : IVictoryPresenter
     {
         Wallet.Instance.AddMoney(_model.GoldCount * Constant.MultiplierReward);
         DataProvider.Instance.SaveMoney();
+        
     }
 
     private IRewardItem[] CreateRewards(VictoryModel victoryModel)

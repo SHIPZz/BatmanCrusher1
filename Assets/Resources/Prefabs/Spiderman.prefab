@@ -25748,7 +25748,6 @@ Transform:
   m_Children:
   - {fileID: 1187470126020663101}
   - {fileID: 8123839897012961641}
-  - {fileID: 4354448686450355900}
   - {fileID: 4458571524198449180}
   - {fileID: 3885997829611501843}
   m_Father: {fileID: 0}
@@ -26505,8 +26504,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.4315436, y: 0.78098935, z: 0.43416846}
-  m_Center: {x: -0.019147925, y: 0.14745007, z: -0.05679475}
+  m_Size: {x: 0.4315436, y: 0.80996054, z: 0.3231898}
+  m_Center: {x: -0.019149153, y: 0.13296391, z: -0.0013041574}
 --- !u!114 &5746103441312803764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26537,7 +26536,7 @@ MonoBehaviour:
   _web: {fileID: 6668760051916173833}
   _layerMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 32776
 --- !u!114 &4990333699333072170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26777,11 +26776,11 @@ Transform:
   m_GameObject: {fileID: 4266527405323663493}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 264.63208, y: 431.85992, z: -147.9303}
-  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
+  m_LocalPosition: {x: 264.63208, y: 430.10822, z: -147.83899}
+  m_LocalScale: {x: 0.6666667, y: 0.66666675, z: 0.66666675}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7859489146102477397}
+  m_Father: {fileID: 4879976783414118751}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3816788455639775946
 MonoBehaviour:
@@ -26795,8 +26794,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3cf1a8d7cb42142bc8e88fc1347845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthBar: {fileID: 0}
+  _healthBar: {fileID: 8140307822203658683}
   _player: {fileID: 2802231598341849502}
+  _healthbarsController: {fileID: 5342758436046548332}
 --- !u!1 &4370124397546755822
 GameObject:
   m_ObjectHideFlags: 0
@@ -47428,7 +47428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 3618993073897848282}
-  _healthBar: {fileID: 0}
+  _healthBar: {fileID: 8140307822203658683}
 --- !u!1 &6205826118154589889
 GameObject:
   m_ObjectHideFlags: 0
@@ -52821,6 +52821,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4354448686450355900}
   - {fileID: 1399163577926277584}
   - {fileID: 6793308506541865070}
   - {fileID: 4430707466892019869}
@@ -52841,8 +52842,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a825cc2c97684ac4980859fface98ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxValue>k__BackingField: 140
-  <InitialValue>k__BackingField: 140
+  <MaxValue>k__BackingField: 160
+  <InitialValue>k__BackingField: 160
 --- !u!114 &3618993073897848282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52855,7 +52856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 503455166d5c275408f757c4c334f91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 140
+  _damage: 160
 --- !u!114 &3200974345633614357
 MonoBehaviour:
   m_ObjectHideFlags: 0

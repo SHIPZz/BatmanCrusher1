@@ -26,15 +26,15 @@ public class GrapplingHook : MonoBehaviour
 
     public void CreateHook()
     {
-        RaycastHit hit = GetRaycastHitFromCamera();
+        RaycastHit hitFromCamera = GetRaycastHitFromCamera();
 
-        RaycastHit newHit = GetRaycastHitFromPlayer(hit);
+        RaycastHit newHit = GetRaycastHitFromPlayer(hitFromCamera);
 
-        if (IsTimeNotGone(_elapsedTime) || 
+        if (IsTimeNotGone(_elapsedTime) ||
             IsColliderNull(newHit.collider) || IsTargetVectorZero(newHit.point))
             return;
-        
-        if(IsWrongLayerMask(newHit.collider, 15))
+
+        if (IsWrongLayerMask(newHit.collider, 15))
             return;
 
         _elapsedTime = Time.time;
@@ -52,15 +52,15 @@ public class GrapplingHook : MonoBehaviour
 
     private RaycastHit GetRaycastHitFromPlayer(RaycastHit hit)
     {
-        var direction = (hit.point - transform.position).normalized;
+        var direction = (hit.point - transform.position);
         Ray ray = new(transform.position, direction);
 
-        if (Physics.Raycast(ray, out RaycastHit newHit, _maxDistance, _layerMask))
+        if (Physics.Raycast(ray, out RaycastHit newHit, 70, _layerMask))
         {
+            Debug.DrawRay(ray.origin, ray.direction, Color.black, 1f);
             return newHit;
         }
 
-        Debug.DrawRay(ray.origin, ray.direction, Color.black, 0.5f);
         return new();
     }
 
@@ -70,7 +70,6 @@ public class GrapplingHook : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            Debug.DrawRay(ray.direction, hit.point, Color.magenta, 1f);
             return hit;
         }
 

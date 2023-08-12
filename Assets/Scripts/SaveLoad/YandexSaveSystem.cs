@@ -19,7 +19,7 @@ public class YandexSaveSystem : ISaveService
     {
         PlayerAccount.GetCloudSaveData(OnSuccessCallback);
 
-        while (_gameData is null || !_isSaveDataReceived)
+        while (!_isSaveDataReceived)
         {
             await UniTask.Yield();
         }

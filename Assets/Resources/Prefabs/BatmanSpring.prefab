@@ -16245,6 +16245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 4463766088431025589}
   _player: {fileID: 5637184478574942389}
+  _healthbarsController: {fileID: 4059412025370956590}
 --- !u!1 &1962395340825419137
 GameObject:
   m_ObjectHideFlags: 0
@@ -51811,8 +51812,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.4160442, y: 0.8043522, z: 0.3406275}
-  m_Center: {x: -0.007955804, y: 0.15596913, z: 0.015275903}
+  m_Size: {x: 0.4160442, y: 0.80264443, z: 0.3406275}
+  m_Center: {x: -0.007956109, y: 0.15682182, z: 0.0152755985}
 --- !u!114 &6292141778761771773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51856,7 +51857,7 @@ MonoBehaviour:
   _web: {fileID: 8644373150009213764}
   _layerMask:
     serializedVersion: 2
-    m_Bits: 32776
+    m_Bits: 49160
 --- !u!120 &6083675570512418124
 LineRenderer:
   serializedVersion: 2

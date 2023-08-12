@@ -1,6 +1,5 @@
 using Agava.YandexGames;
 using System;
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,12 +8,7 @@ public class PlayingAdvertisingHandler : MonoBehaviour
     [SerializeField] private Button _advertisingVictoryButton;
     [SerializeField] private Button _advertisingDeathButton;
 
-    public Button AdvertisingButton =>
-        _advertisingVictoryButton;
-
-    public event Action RewardedCallbackPlayed;
     public event Action Opened;
-    public event Action DeathRewardedCallbackPlayed;
     public event Action RewardedClosed;
     public event Action RewardedDeathClosed;
 
@@ -32,17 +26,12 @@ public class PlayingAdvertisingHandler : MonoBehaviour
 
     private void SeeLongAd()
     {
-        VideoAd.Show(OnOpenedCallback, OnRewardedCallback, OnRewardClosedCallback, OnErrorCallback);
+        VideoAd.Show(OnOpenedCallback, null,  OnRewardClosedCallback, OnErrorCallback);
     }
 
     private void SeeLongAdAfterDeathAd()
     {
-        VideoAd.Show(OnOpenedCallback, OnRewardedDealthCallback, OnRewardedDeathClosedCallback);
-    }
-
-    private void SeeShortAd()
-    {
-        InterstitialAd.Show(OnOpenCallback, OnCloseCallback, OnErrorCallback);
+        VideoAd.Show(OnOpenedCallback, null,  OnRewardedDeathClosedCallback);
     }
 
     private void OnErrorCallback(string obj) { }
@@ -50,39 +39,20 @@ public class PlayingAdvertisingHandler : MonoBehaviour
     private void OnOpenedCallback()
     {
         Opened?.Invoke();
-        Time.timeScale = 0f;
     }
 
     private void OnRewardClosedCallback()
     {
-        Time.timeScale = 1f;
         RewardedClosed?.Invoke();
-        // LongAdClosed?.Invoke();
     }  
     
     private void OnRewardedDeathClosedCallback()
     {
-        Time.timeScale = 1f;
         RewardedDeathClosed?.Invoke();
-        // LongAdClosed?.Invoke();
     }
-
-    private void OnCloseCallback(bool obj)
-    {
-        Time.timeScale = 1f;
-        // DeathRewardedCallbackPlayed?.Invoke();
-    }
-
-    private void OnRewardedDealthCallback() =>
-        DeathRewardedCallbackPlayed?.Invoke();
 
     private void OnRewardedCallback()
     {
-        RewardedCallbackPlayed?.Invoke();
-    }
-
-    private void OnOpenCallback()
-    {
-        Time.timeScale = 0f;
+        // RewardedCallbackPlayed?.Invoke();
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Agava.WebUtility;
 using Agava.YandexGames;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using I2.Loc;
 using UnityEngine;
@@ -100,8 +101,10 @@ namespace LvlInit
             Time.timeScale = inBackground ? 0f : 1f;
         }
 
-        public void UploadData()
+        public async UniTask UploadData()
         {
+            await DataProvider.Instance.LoadInitialData();
+            
             _imageHandler.SetImage(DataProvider.Instance.GetImage());
             _audioVolumeHandler.SetVolume(DataProvider.Instance.GetVolume());
             _enemyDestroyingHandler.SetCount(DataProvider.Instance.GetEnemyCount());
@@ -120,14 +123,14 @@ namespace LvlInit
             _playerSpawner.SetCharacterId(DataProvider.Instance.GetCharacter());
             _playerSelectedCharacter.SetInitialCharacter(DataProvider.Instance.GetCharacter());
             _enemyDestroyingHandler.SetCount(DataProvider.Instance.GetEnemyCount());
-            ConfigureCamera(_initialCameraPositionY, 1.5f);
-            yield return new WaitForSeconds(1.5f);
-            _audioVolumeHandler.SetVolume(DataProvider.Instance.GetVolume());
+            ConfigureCamera(_initialCameraPositionY, 2f);
+            yield return new WaitForSeconds(2f);
             _enemyCountLeaderboard.LoadLeaderboard();
+            _audioVolumeHandler.SetVolume(DataProvider.Instance.GetVolume());
             LocalizationManager.CurrentLanguage = _languages[YandexGamesSdk.Environment.i18n.lang];
+            _imageHandler.SetImage(YandexGamesSdk.Environment.i18n.lang);
             Wallet.Instance.LoadMoney(DataProvider.Instance.GetMoney());
             _walletUIView.SetMoneyCount(DataProvider.Instance.GetMoney());
-            _imageHandler.SetImage(YandexGamesSdk.Environment.i18n.lang);
             SetDistanceCanvasActive(true);
             ConfigurePlayCanvas(true);
         }
