@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private const float ActiveDistance = 0.15f;
+    private const float ActiveDistance = 0.01f;
 
     [SerializeField] private GrapplingHook _hook;
     [SerializeField] private float _speed = 4f;
@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
         if (!_isMoved)
             yield break;
 
-        while (Vector3.Distance(_rigidBody.position, point) > ActiveDistance)
+        while (Vector3.Distance(_rigidBody.position, point) != ActiveDistance)
         {
             _speed += _speedStep;
 

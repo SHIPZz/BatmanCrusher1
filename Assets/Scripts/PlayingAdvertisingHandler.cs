@@ -1,6 +1,7 @@
 using Agava.YandexGames;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayingAdvertisingHandler : MonoBehaviour
@@ -31,10 +32,14 @@ public class PlayingAdvertisingHandler : MonoBehaviour
 
     private void SeeLongAdAfterDeathAd()
     {
-        VideoAd.Show(OnOpenedCallback, null,  OnRewardedDeathClosedCallback);
+        VideoAd.Show(OnOpenedCallback, null,  OnRewardedDeathClosedCallback, OnErrorCallback);
     }
 
-    private void OnErrorCallback(string obj) { }
+    private void OnErrorCallback(string obj)
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(1);
+    }
 
     private void OnOpenedCallback()
     {

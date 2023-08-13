@@ -97,10 +97,9 @@ namespace LvlInit
 
         private void OnInBackgroundChange(bool inBackground)
         {
-            Debug.Log(_isAdShown);
-            if(_isAdShown)
+            if (_isAdShown)
                 return;
-            
+
             AudioListener.pause = inBackground;
 
             Time.timeScale = inBackground ? 0f : 1f;
@@ -127,9 +126,10 @@ namespace LvlInit
             if (DataProvider.Instance.GetLevel() > 4)
             {
                 _isAdShown = true;
-                InterstitialAd.Show(OnOpenCallBack, OnCloseCallback);
+
+                InterstitialAd.Show(OnOpenCallBack, OnCloseCallback, a => DisablePause(), DisablePause);
             }
-            
+
             _playerSpawner.SetCharacterId(DataProvider.Instance.GetCharacter());
             _playerSelectedCharacter.SetInitialCharacter(DataProvider.Instance.GetCharacter());
             _enemyDestroyingHandler.SetCount(DataProvider.Instance.GetEnemyCount());
@@ -142,25 +142,28 @@ namespace LvlInit
             _walletUIView.SetMoneyCount(DataProvider.Instance.GetMoney());
             SetDistanceCanvasActive(true);
             ConfigurePlayCanvas(true);
+        }
 
+        private void DisablePause()
+        {
+            _isAdShown = false;
+            Time.timeScale = 1f;
         }
 
         private void OnCloseCallback(bool wasShown)
         {
             Debug.Log(wasShown);
 
-            if (!wasShown) 
+            if (!wasShown)
                 return;
-            
+
             AudioListener.pause = false;
             Time.timeScale = 1f;
             _isAdShown = false;
-            Debug.Log("ONCLOSECALLBACK");
         }
 
         private void OnOpenCallBack()
         {
-            Debug.Log("ONOPENCALLBACK");
             AudioListener.pause = true;
             Time.timeScale = 0f;
             _isAdShown = true;
