@@ -294,6 +294,15 @@ MonoBehaviour:
       - "Siz \xF6ld\xFCn\xFCz"
       Flags: 000000
       Languages_Touch: []
+    - Term: "\u041D\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043D\u044B\u0439"
+      TermType: 0
+      Description: 
+      Languages:
+      - Unknown
+      - "\u041D\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043D\u044B\u0439"
+      - Bilinmeyen
+      Flags: 000000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: 

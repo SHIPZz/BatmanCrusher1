@@ -45,9 +45,6 @@ public class LevelLoadMedaitor : MonoBehaviour
 
         _currentLevel = DataProvider.Instance.GetLevel();
 
-        if (_currentLevel > 4)
-            InterstitialAd.Show(() => Time.timeScale = 0f, x => Time.timeScale = x ? 1 : 0);
-
         _loader.Load(_currentLevel);
         _camera.gameObject.SetActive(false);
     }
@@ -96,7 +93,7 @@ public class LevelLoadMedaitor : MonoBehaviour
         _currentLevel = DataProvider.Instance.GetLevel();
 
         _currentLevel++;
-
+        
         DataProvider.Instance.SaveLevel(_currentLevel);
 
         _loader.Load(_currentLevel);

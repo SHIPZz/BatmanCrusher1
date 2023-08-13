@@ -23,8 +23,7 @@ public class PauseEvent : MonoBehaviour, IPauseService
         _resumptionButton.onClick.AddListener(UnPause);
         _sliderLoadingEvent.ValueEnded += UnPause;
         _restartingGameEvent.Reloaded += UnPause;
-        _advertisingButton.onClick.AddListener(UnPause);
-        
+        _advertisingButton.onClick.AddListener(UnPause);     
     }
 
     private void OnDisable()

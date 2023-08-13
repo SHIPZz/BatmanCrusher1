@@ -35,7 +35,7 @@ public class EnemyCountLeaderboard : MonoBehaviour
 
     private void Start()
     {
-        Init();
+        // Init();
     }
 
     private void OnEnable()
@@ -50,10 +50,7 @@ public class EnemyCountLeaderboard : MonoBehaviour
 
     public void LoadLeaderboard()
     {
-        if (PlayerAccount.IsAuthorized)
-        {
-            Init();
-        }
+        Init();
     }
 
     private void Init() =>
@@ -62,20 +59,13 @@ public class EnemyCountLeaderboard : MonoBehaviour
 
     private void OnEnableLeaderboard()
     {
-        if (PlayerAccount.IsAuthorized)
-        {
-            PlayerAccount.RequestPersonalProfileDataPermission();
+        if (!PlayerAccount.IsAuthorized)
+            PlayerAccount.Authorize();
 
-            if (PlayerAccount.HasPersonalProfileDataPermission == false)
-                return;
-
-            Init();
-
-            DataLoaded?.Invoke();
+        PlayerAccount.RequestPersonalProfileDataPermission();
+        
+        if(!PlayerAccount.HasPersonalProfileDataPermission)
             return;
-        }
-
-        PlayerAccount.Authorize();
 
         Init();
         DataLoaded?.Invoke();
@@ -85,6 +75,8 @@ public class EnemyCountLeaderboard : MonoBehaviour
     {
         for (int i = 0; i < result.entries.Length; i++)
         {
+            _names[i].GetComponent<I2.Loc.Localize>().enabled = false;
+            _names[i].text = "";
             _names[i].text = result.entries[i].player.publicName;
 
             if (string.IsNullOrEmpty(_names[i].text))

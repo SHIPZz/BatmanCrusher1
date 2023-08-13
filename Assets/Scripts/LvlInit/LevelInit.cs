@@ -18,7 +18,6 @@ namespace LvlInit
         [SerializeField] private CanvasGroupAlphaHandler _canvasAlphaState;
         [SerializeField] private Camera _camera;
         [SerializeField] private PlayerSpawner _playerSpawner;
-        [SerializeField] private ImageHandler _imageHandler;
         [SerializeField] private AudioVolumeHandler _audioVolumeHandler;
         [SerializeField] private LevelText _levelText;
         [SerializeField] private EnemyDestroyingHandler _enemyDestroyingHandler;
@@ -41,6 +40,8 @@ namespace LvlInit
             { "en", "English" },
             { "tr", "Turkish" }
         };
+
+        private bool _isAdShown;
 
         private void Awake()
         {
@@ -65,7 +66,7 @@ namespace LvlInit
         private async void Start()
         {
             await DataProvider.Instance.LoadInitialData();
-            
+
             StartCoroutine(nameof(InitializeDependencies));
         }
 
@@ -96,6 +97,10 @@ namespace LvlInit
 
         private void OnInBackgroundChange(bool inBackground)
         {
+            Debug.Log(_isAdShown);
+            if(_isAdShown)
+                return;
+            
             AudioListener.pause = inBackground;
 
             Time.timeScale = inBackground ? 0f : 1f;
@@ -104,8 +109,7 @@ namespace LvlInit
         public async UniTask UploadData()
         {
             await DataProvider.Instance.LoadInitialData();
-            
-            _imageHandler.SetImage(DataProvider.Instance.GetImage());
+
             _audioVolumeHandler.SetVolume(DataProvider.Instance.GetVolume());
             _enemyDestroyingHandler.SetCount(DataProvider.Instance.GetEnemyCount());
             _playerSpawner.SetCharacterId(DataProvider.Instance.GetCharacter());
@@ -120,6 +124,12 @@ namespace LvlInit
 
         private IEnumerator InitializeDependencies()
         {
+            if (DataProvider.Instance.GetLevel() > 4)
+            {
+                _isAdShown = true;
+                InterstitialAd.Show(OnOpenCallBack, OnCloseCallback);
+            }
+            
             _playerSpawner.SetCharacterId(DataProvider.Instance.GetCharacter());
             _playerSelectedCharacter.SetInitialCharacter(DataProvider.Instance.GetCharacter());
             _enemyDestroyingHandler.SetCount(DataProvider.Instance.GetEnemyCount());
@@ -128,11 +138,32 @@ namespace LvlInit
             _enemyCountLeaderboard.LoadLeaderboard();
             _audioVolumeHandler.SetVolume(DataProvider.Instance.GetVolume());
             LocalizationManager.CurrentLanguage = _languages[YandexGamesSdk.Environment.i18n.lang];
-            _imageHandler.SetImage(YandexGamesSdk.Environment.i18n.lang);
             Wallet.Instance.LoadMoney(DataProvider.Instance.GetMoney());
             _walletUIView.SetMoneyCount(DataProvider.Instance.GetMoney());
             SetDistanceCanvasActive(true);
             ConfigurePlayCanvas(true);
+
+        }
+
+        private void OnCloseCallback(bool wasShown)
+        {
+            Debug.Log(wasShown);
+
+            if (!wasShown) 
+                return;
+            
+            AudioListener.pause = false;
+            Time.timeScale = 1f;
+            _isAdShown = false;
+            Debug.Log("ONCLOSECALLBACK");
+        }
+
+        private void OnOpenCallBack()
+        {
+            Debug.Log("ONOPENCALLBACK");
+            AudioListener.pause = true;
+            Time.timeScale = 0f;
+            _isAdShown = true;
         }
 
         private void SetDistanceCanvasActive(bool isActive)

@@ -17,7 +17,7 @@ public class Chest : MonoBehaviour
         _animator = GetComponent<Animator>();
         _collider = GetComponent<BoxCollider>();
 
-        _collider.size = new Vector3(0.7493408f, 0.7046234f, 0.5347263f);
+        _collider.size = new Vector3(1f, 0.7046234f, 0.5347263f);
         _collider.center = new Vector3(0.01330485f, 0.3809601f, -0.01462798f);
         _collider.isTrigger = true;
         gameObject.layer = 3;
