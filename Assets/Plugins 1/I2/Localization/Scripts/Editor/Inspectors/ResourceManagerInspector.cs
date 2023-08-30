@@ -4,7 +4,7 @@ using UnityEngine;
 namespace I2.Loc
 {
 	[CustomEditor(typeof(ResourceManager))]
-	public class ResourceManagerInspector : Editor 
+	public class ResourceManagerInspector : UnityEditor.Editor 
 	{
 		SerializedProperty mAssets;
 

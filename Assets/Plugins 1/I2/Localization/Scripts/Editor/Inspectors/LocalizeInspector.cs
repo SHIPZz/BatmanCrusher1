@@ -14,7 +14,7 @@ namespace I2.Loc
 {
 	[CustomEditor(typeof(Localize))]
 	[CanEditMultipleObjects]
-	public class LocalizeInspector : Editor
+	public class LocalizeInspector : UnityEditor.Editor
 	{
 		#region Variables
 

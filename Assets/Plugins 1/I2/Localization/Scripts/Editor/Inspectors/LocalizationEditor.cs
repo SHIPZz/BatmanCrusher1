@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace I2.Loc
 {
-	public abstract partial class LocalizationEditor : Editor
+	public abstract partial class LocalizationEditor : UnityEditor.Editor
 	{
 		#region Variables
 		
@@ -16,7 +16,7 @@ namespace I2.Loc
 		public static LanguageSourceData mLanguageSource;
         public static Object mLanguageSourceObject;
         public static LocalizationEditor mLanguageSourceEditor;
-        public static Editor mCurrentInspector;
+        public static UnityEditor.Editor mCurrentInspector;
 
         static bool mIsParsing;  // This is true when the editor is opening several scenes to avoid reparsing objects
 

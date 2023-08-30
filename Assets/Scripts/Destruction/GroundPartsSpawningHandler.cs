@@ -1,53 +1,55 @@
-using RayFire;
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider))]
-public class GroundPartsSpawningHandler : MonoBehaviour
+namespace Destruction
 {
-    private const int HardCubeLayer = 15;
-
-    [SerializeField] private List<Rigidbody> _parts = new List<Rigidbody>();
-    private EnemyDestruction _enemyDestruction;
-
-    public event Action PlatformDestroyed;
-
-    private void Awake()
+    [RequireComponent(typeof(BoxCollider))]
+    public class GroundPartsSpawningHandler : MonoBehaviour
     {
-        gameObject.layer = HardCubeLayer;
-        GetComponent<Collider>().isTrigger = false;
-        this.SetKinematic(_parts, true);
-    }
+        private const int HardCubeLayer = 15;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent(out EnemyDestruction enemyDestruction))
+        private List<Rigidbody> _parts = new();
+        private EnemyDestruction _enemyDestruction;
+        private GroundPart _groundPart;
+
+        public event Action PlatformDestroyed;
+
+        private void Awake()
         {
-            _enemyDestruction = enemyDestruction;
-            _enemyDestruction.Destroyed += Demolish;
-        }
-    }
+            gameObject.layer = HardCubeLayer;
+            GetComponent<Collider>().isTrigger = false;
 
-    public void Demolish(Transform position)
-    {
-        foreach (var part in _parts)
-        {
-            this.SetActive(part.gameObject, true, 0f);
-            part.isKinematic = false;
-            part.transform.position = _enemyDestruction.transform.position;
+            var groundPartPrefab = Resources.Load<GroundPart>("Prefabs/GroundPart");
+             _groundPart = Instantiate(groundPartPrefab);
+
+            _parts = _groundPart.Parts;
         }
 
-        _enemyDestruction.Destroyed -= Demolish;
-        this.SetActive(gameObject, false, 0f);
-        PlatformDestroyed?.Invoke();
-    }
-
-    private void SetPartsPosition(Vector3 position)
-    {
-        foreach (var part in _parts)
+        private void OnTriggerEnter(Collider other)
         {
-            part.transform.position = position;
+            if (other.TryGetComponent(out EnemyDestruction enemyDestruction))
+            {
+                _enemyDestruction = enemyDestruction;
+                _enemyDestruction.Destroyed += Demolish;
+            }
+        }
+
+        private void Demolish(Transform position)
+        {
+            foreach (var part in _parts)
+            {
+                this.SetActive(part.gameObject, true, 0f);
+                part.isKinematic = false;
+                part.transform.position = _enemyDestruction.transform.position;
+            }
+
+            _enemyDestruction.Destroyed -= Demolish;
+            _groundPart.InitDisable();
+            PlatformDestroyed?.Invoke();
+            transform.DOScale(0, 0);
+            this.SetActive(gameObject, false, 1f);
         }
     }
 }

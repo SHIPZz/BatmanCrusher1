@@ -154,7 +154,7 @@ namespace I2.Loc
         #if UNITY_EDITOR
         static void RepaintInspectors()
         {
-            var assemblyEditor = Assembly.GetAssembly(typeof(Editor));
+            var assemblyEditor = Assembly.GetAssembly(typeof(UnityEditor.Editor));
             var typeInspectorWindow = assemblyEditor.GetType("UnityEditor.InspectorWindow");
             if (typeInspectorWindow != null)
             {
